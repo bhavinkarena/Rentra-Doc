@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.3 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.4 session.
 
 ## Start here
 
@@ -19,6 +19,18 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 1.4 complete and pushed - 26 October 2026
+
+Story 1.4 (selective physical verification). The existing CP07 verification code already covered most of the acceptance criteria; two gaps were fixed:
+- A physical visit now needs a recorded reason and scope.
+- A failed visit sends the owner a separate message, so internal findings are never shown to them.
+
+No migration. Neon had 0 legacy rows leaking findings (read-only check). Backend `089346c049f452841dcff789947a5712ad1d835c`, frontend `125b3dc064598993cb5769780c85587786586472`, both pushed.
+
+Checks: backend 327 of 327 with no skips; frontend 115 of 115; `cp07_gate.py` 52 of 53. The one failure is pre-existing copy drift: "Guests can see it but cannot book yet" now appears only in the wizard `SubmitBar`. The gate needs a refresh. Details: [spec](_bmad-output/implementation-artifacts/spec-1-4-selective-physical-verification.md).
+
+**Exact next action:** Story 1.5 (send specific property correction requests) from [epics.md](_bmad-output/planning-artifacts/epics.md) through `bmad-build`. Story 1.3's video flag remains off pending the real Cloudinary demonstration.
 
 ### Story 1.3 complete locally; migration 0071 and release gate open - 26 October 2026
 
