@@ -1,0 +1,48 @@
+﻿[
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-owner-rooms.html",
+    "line": 0,
+    "snippet": "div \"Design preview · Example owner/property \" uses jakarta sans; not declared in DESIGN.md typography",
+    "ignoreValue": "jakarta sans"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-owner-rooms.html",
+    "line": 0,
+    "snippet": "border-top rgb(0, 0, 0) on span \"Private draft\" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(0, 0, 0)"
+  },
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-owner-rates.html",
+    "line": 0,
+    "snippet": "div \"Design preview · Example owner/property \" uses jakarta sans; not declared in DESIGN.md typography",
+    "ignoreValue": "jakarta sans"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-owner-rates.html",
+    "line": 0,
+    "snippet": "border-top rgb(0, 0, 0) on span \"Private draft\" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(0, 0, 0)"
+  }
+]

@@ -1,0 +1,16 @@
+# Generated BMad workflows contain local absolute paths.
+_bmad/render/
+*.user.toml
+__pycache__/
+*.py[cod]
+.claude/settings.local.json
+.env
+.env.*
+!.env.example
+.working/.browser/
+**/.browser/
+*.log
+*.err
+.DS_Store
+Thumbs.db
+database-schema-live.json

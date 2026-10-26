@@ -1,0 +1,3 @@
+# Team routing; installer-managed defaults remain intact.
+[modules.bmm]
+project_knowledge = "{project-root}"
