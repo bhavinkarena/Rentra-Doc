@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.7 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.8 session.
 
 ## Start here
 
@@ -19,6 +19,24 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.8 complete and pushed - 26 October 2026
+
+The confirm-and-reserve contract already existed (CP12/Phase 10):
+- an explicit `accepted` flag plus the current preview hash;
+- an atomic cancellation with a single refund intent, with no admin approval;
+- idempotent replay, `IDEMPOTENCY_CONFLICT` on a changed payload, `CANCELLATION_CHANGED` on a stale preview;
+- in the UI, a refused commit clears the preview and a lost response retries the same key.
+
+Added evidence in backend `1082e2f` (pushed, tests only):
+- a stale hash changes nothing;
+- a different payload conflicts;
+- one refund intent matches the preview and stays distinct from completion;
+- a 0% cancellation cancels without creating any refund row.
+
+Backend 340 of 340. Story 2.7 is backend `0e1972c`.
+
+**Exact next action:** Story 2.9 (dispatch refunds and reconcile verified outcomes).
 
 ### Story 2.7 complete and pushed - 26 October 2026
 
