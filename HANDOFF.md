@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.8 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.5 session.
 
 ## Start here
 
@@ -19,6 +19,30 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Stories 2.1-2.5 complete; migration 0074 blocks the push - 26 October 2026
+
+- **Story 2.1 (pushed):**
+  - A new `approved` outcome (migration 0073, on Neon) and automatic publication once the owner identity is approved and sellable dates exist.
+  - A scheduled visit holds publication; approval alone never sets `verified_at`.
+  - [spec](_bmad-output/implementation-artifacts/spec-2-1-automatic-publication.md)
+- **Stories 2.2-2.5 (local):**
+  - One guest-paid 5% Rentra service fee: owner overrides, append-only audited settings, rounded once per order, hotels moved to the guest fee, and commission retired for new stays.
+  - Return to the customer page after login.
+  - New hold and payment evidence tests.
+  - [spec](_bmad-output/implementation-artifacts/spec-2-2-to-2-5-fee-quote-hold-payment.md)
+
+Commits: backend `880e8bb64cc212559bff895e5c089038b54de0d8`, frontend `e4c5f46d702699ed13052245a20f1bf37cfa8b74`, both **unpushed**. Checks: backend 334 of 334, frontend 115 of 115.
+
+**Release order:**
+1. The user runs `npm run db:migrate` in `rentra-backend`. Neon is at 0073, so this applies 0074 only. The fee becomes 5% for new quotes from that moment.
+2. Push the backend.
+3. Push the frontend.
+4. Publish a new policy version replacing the 8% wording.
+
+**Open gates:** GST on the fee, gateway costs and accounting.
+
+**Exact next action:** after the release, continue with Story 2.6 through `bmad-build`.
 
 ### Stories 1.5-1.8 complete; migration 0072 blocks the backend push - 26 October 2026
 
