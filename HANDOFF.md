@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.8 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.9 session.
 
 ## Start here
 
@@ -19,6 +19,23 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.9 complete; provider evidence gate open - 26 October 2026
+
+Refund dispatch and reconciliation already existed (`payments/refunds.js`, CP20). It already provides:
+- a durable dispatch claim persisted before the network call, outside domain locks;
+- after the claim it is lookup-only and never posts again;
+- a lost response becomes `unknown` and is looked up;
+- a provider failure keeps the reservation and is never resent;
+- completion only after a verified, scoped provider record, with duplicate callbacks counted once.
+
+The proof is `refund-operations.integration.test.js` (CP20).
+
+Added in frontend `3865893` (pushed): the guest booking record states that a refund is complete only when the provider confirms it, and that bank timing is not promised.
+
+**Not done (evidence gate, PRD OQ-1 and spine line 203):** provider-specific old-payment refund limits and timing estimates. No provider limit or estimate was invented. These need account-specific evidence and signed hosted Test acceptance before Live.
+
+**Exact next action:** Story 2.10.
 
 ### Story 2.8 complete and pushed - 26 October 2026
 
