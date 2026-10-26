@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.4 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.8 session.
 
 ## Start here
 
@@ -19,6 +19,30 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Stories 1.5-1.8 complete; migration 0072 blocks the backend push - 26 October 2026
+
+The user asked to finish Epic 1 through Story 1.8.
+
+- **Story 1.5 (pushed):** the owner property detail leaked the reviewer's email and id. It was fixed in the shared `getListingForEdit` query and the controller, with an acceptance test. [spec](_bmad-output/implementation-artifacts/spec-1-5-property-correction-requests.md)
+- **Stories 1.6/1.7:** reviewer alerts. The user chose the recipients (assigned reviewer, else all property reviewers) and approved building migration `0072_admin_alert` with tracked email.
+  - A resubmission alert names the submission.
+  - Correction milestones fire at day 7, 15 and 30 from the decision instant, once each, catching up after missed ticks, with no automatic rejection.
+  - Delivery failures are visible in the admin queue inbox.
+  - Owners now see refused or failed resubmissions.
+  - [spec](_bmad-output/implementation-artifacts/spec-1-6-1-7-resubmission-and-correction-alerts.md)
+- **Story 1.8:** direct rejection already existed; the decision audit now records the `from` status too. [spec](_bmad-output/implementation-artifacts/spec-1-8-reject-with-reason.md)
+
+Commits: backend `c0f4a932eea85b2e480bff0a8981dcfbe84bfa94` (**local, unpushed**), frontend `4973c19b79815bacb97f182549bebce759a84d1f` (pushed; it tolerates the missing backend route).
+
+Checks: backend 330 of 330 with no skips; frontend 115 of 115; browser gates `reviewer-alerts` 3, `owner-wizard` 14, `owner-draft-recovery` 5, `admin-revision-evidence` 6.
+
+**Release order:**
+1. The user runs `npm run db:migrate` in `rentra-backend`. Neon is at 0071, so this applies 0072 only. The Claude permission classifier blocks this command.
+2. Verify the table, then push the backend.
+3. Reviewer emails also need `OWNER_NOTIFICATION_DELIVERY=enabled` and the Resend settings on Render; until then alerts show "Email not configured".
+
+**Exact next action:** after 0072 is applied and the backend is pushed, Epic 1 Stories 1.1-1.8 are delivered. Continue with Epic 2 Story 2.1 through `bmad-build`.
 
 ### Story 1.4 complete and pushed - 26 October 2026
 
