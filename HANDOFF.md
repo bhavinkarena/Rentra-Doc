@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata).
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.2 session.
 
 ## Start here
 
@@ -19,6 +19,43 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 1.1 complete; Story 1.2 complete locally - 26 October 2026
+
+Continued through `bmad-build` under the standing authorization below. Revisions at the start matched the previous entry: frontend `1b1058306573d714a3a9ef64fe33307786910b79` and backend `7612e4a8c46c66c16057d10412a86679ec859bbc`. Docs had already advanced to `bba903b7ae6d146c3931f932def8e6e3834b22fa`, which commits the previous checkpoint.
+
+**Story 1.1 (private draft recovery) is complete locally.**
+- Backend owner-onboarding and owner-wizard integration: 2 of 2 passed on a disposable local cluster.
+- `owner-wizard.mjs`: 14 of 14 passed after updating two stale selectors.
+- New `owner-draft-recovery.mjs`: 5 of 5 passed. It checks desktop resume, signed-out denial, other-owner not-found, the stale-tab conflict at 360px and the ended-session sign-in at 360px.
+- A real defect was found and fixed: Load latest restored the stale tab's typing over the newer server save. Frontend `8a35a97d244a5199f9e779666731bd88296565e1`, backend `f67fc02627b9f9cababb569913310d446a3e63aa`.
+- Details: [Story 1.1 progress](_bmad-output/implementation-artifacts/story-1-1-progress.md).
+
+**Story 1.2 (inspect the evidence for a submitted revision) is complete locally.**
+- The review detail now shows separate owner identity, property review and bookability facts.
+- Document status is labelled as recorded at submission, and evidence links have descriptive names and visible focus.
+- Each visit is tied to its pass, and the page states when the viewed pass has no completed site visit.
+- An unavailable document explains that it was not reviewed.
+- The backend adds `application_status` to the read, with denial and no-mutation integration checks. There is no migration and no command change.
+- Results: backend 326 of 326 passed with no skips; frontend 115 of 115 passed; new `admin-revision-evidence.mjs` 6 of 6 passed at 360 and 1280px.
+- Frontend `7bee16f44d7100c770166b880c34621467fec6b7`, backend `6ea66b7c63a573fd0e32b4ccba0b68793df327ba`.
+- Details: [spec, triage and verification](_bmad-output/implementation-artifacts/spec-1-2-inspect-submitted-revision-evidence.md).
+
+**Not verified:** a successful private-file stream (the fixture file is not in Cloudinary, so only the 502 path ran), real devices, a screen reader and production builds.
+
+**Deferred:** accepting or rejecting a document bumps `content_version` and makes the submitted revision appear stale; this belongs to the review-command slice. The file route does not check that a document belongs to the property being viewed (existing capability model). The Load latest refusal has no in-page route to the newer version when storage removal fails.
+
+**How to run the checks:**
+1. Run `initdb -U postgres --auth=trust` on port 55432.
+2. Run backend tests with `PORTAL_TEST_DATABASE_URL` and `CP01_TEST_DATABASE_URL` pointing at that cluster and `DATABASE_URL=postgres://nobody@127.0.0.1:1/never`.
+3. For browser gates, start `serve-owner-wizard.mjs` with `OWNER_WIZARD_FIXTURE=<temp json>`, then start Next fixture mode on 3143.
+4. Run `owner-wizard.mjs`, then `owner-draft-recovery.mjs` and `admin-revision-evidence.mjs`. The last one also needs `POSTGRES_MODULE=<rentra-backend>/node_modules/postgres`. Set `CHROME` on macOS.
+
+The fixture JSON contains live fixture sessions; keep it outside the repositories and delete it afterwards.
+
+On 26 October, the code commits were pushed to `Rentra` `main` and `rentra-backend` `master` and this documentation was committed and pushed, at the user's instruction. Those branches may auto-deploy through Vercel/Render; hosted acceptance was not checked. No hosted database, migration, provider or deployment action occurred.
+
+**Exact next action:** start Story 1.3 (request and securely receive additional property video evidence) from [epics.md](_bmad-output/planning-artifacts/epics.md) through `bmad-build`. Read the Story 1.2 spec's Deferred list first. Story 1.3 likely adds an owner evidence-request flow and may need a migration; any migration must stay local until explicitly approved for Neon.
 
 ### Backlog complete; Story1.1 implementation started - 26 October 2026
 
