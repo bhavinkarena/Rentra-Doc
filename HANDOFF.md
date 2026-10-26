@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.5 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.6 session.
 
 ## Start here
 
@@ -19,6 +19,19 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.6 complete locally; migration 0075 blocks the push - 26 October 2026
+
+Owner percentage cancellation windows, decided by the user: hours, up to 6 windows; presets only fill the windows; one at-or-after-check-in percentage; optional early departure. Hotels get a default that each rate can override, and existing tiers and plans are migrated. [spec](_bmad-output/implementation-artifacts/spec-2-6-cancellation-windows.md)
+
+Commits: backend `9c8f2c9860a9002215680580decaefb6b0d28683`, frontend `01b718f38d36b3f8588d1e7f1fa713b1450ac04a`, both **unpushed**. Checks: backend 338 of 338, frontend 115 of 115.
+
+**Release order:**
+1. The user runs `npm run db:migrate` (Neon is at 0074; this applies 0075 only).
+2. Push the backend.
+3. Push the frontend.
+
+**Exact next action:** after the release, Story 2.7 (preview exact booked-policy refunds on the full paid basis).
 
 ### Stories 2.1-2.5 complete; migration 0074 blocks the push - 26 October 2026
 
