@@ -5,7 +5,7 @@ async page => {
   for(const file of ['key-admin-verification.html','key-admin-support.html']) {
     for(const width of [320,390,768,1440]) {
       await page.setViewportSize({width,height:width>1000?1000:844});
-      await page.goto(root+file);
+      await page.goto(root+file+'?review='+Date.now());
       await page.evaluate(()=>document.fonts.ready);
       const metrics=await page.evaluate(()=>({
         overflow:document.documentElement.scrollWidth>innerWidth,
@@ -40,5 +40,16 @@ async page => {
       if(await field.evaluate(el=>getComputedStyle(el).outlineStyle)==='none') throw new Error('Invisible focus');
     }
   }
-  return {viewports:results,disclosures:true,nativeEditing:true,focus:true,noCommandsSent:true};
+  await page.goto(root+'key-admin-support.html?review='+Date.now());
+  await page.locator('#reply-internal').check();
+  if(!(await page.locator('.audience-internal').isVisible())||await page.locator('.audience-customer').isVisible()) throw new Error('Internal audience not isolated');
+  if(await page.locator('#reply-state').isVisible()) throw new Error('Internal note must not change support status');
+  if(!(await page.getByRole('button',{name:'Save internal note',exact:true}).isDisabled())) throw new Error('Internal-note command enabled');
+  await page.locator('#reply-public').check();
+  if(!(await page.locator('#reply-state').isVisible())) throw new Error('Public reply status unavailable');
+  await page.setViewportSize({width:390,height:844});
+  await page.locator('.mobile-admin summary').focus();
+  await page.keyboard.press('Enter');
+  if(!(await page.locator('.mobile-admin').getByRole('link',{name:'Property reviews',exact:true}).isVisible())) throw new Error('Mobile navigation failed');
+  return {viewports:results,disclosures:true,nativeEditing:true,focus:true,audienceSeparation:true,mobileKeyboardNavigation:true,noCommandsSent:true};
 }

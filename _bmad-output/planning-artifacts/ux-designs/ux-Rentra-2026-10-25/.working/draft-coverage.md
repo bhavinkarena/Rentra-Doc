@@ -1,6 +1,6 @@
-# Draft coverage — 25 October 2026
+# Historical draft coverage — 25 October 2026
 
-Initial distillation checks only; not the opt-in Reviewer Gate or a validation certification.
+Historical distillation checkpoint. Final UX status and resolved findings are in ../finalization-checks.md and ../validation-report.md; any open-step wording below describes the earlier draft stage.
 
 | Pass 1 area | Draft result / remaining work |
 |---|---|
@@ -9,12 +9,14 @@ Initial distillation checks only; not the opt-in Reviewer Gate or a validation c
 | Component coverage | Twelve product composition names match across DESIGN.Components and EXPERIENCE.Component Patterns. Existing primitive styles/behavior inherit from the current system. |
 | State coverage | Every IA row maps to reusable state profiles covering applicable initial/empty/loading/focus/error/offline/permissions, plus financial and review-specific distinctions. Needs screen-by-screen verification against actual implementation. |
 | Source references | All frontmatter source paths checked to exist. No application files modified. |
-| Visual reference coverage | Hotel room-selection direction approved and promoted to `mockups/` after comparison with a simplified source reconstruction. Owner rooms/rates mockups are the next selected surfaces. Running-app comparison and broader screen coverage remain open. |
+| Visual reference coverage | Hotel room-selection and owner Rooms/Rates directions approved in `mockups/`. Admin verification/support directions checked and user-approved on 26 October, promoted to `mockups/`. Running-app comparison and remaining coverage stay open. |
 | Shape | Canonical DESIGN order and all required EXPERIENCE sections present; Responsive & Platform and Inspiration & Anti-patterns included. Both status values remain draft. |
 
 ## Open before finalization
 
-- Hotel room/offer composition is approved; complete owner setup and remaining quote/status/admin exception references where layout drives behavior. Classify remaining surfaces as spine-only with the user.
+- Hotel room/offer composition and owner Rooms/Rates are approved. Admin verification/support directions are also approved. Resolve remaining quote/status/financial exception references where layout drives behavior. Classify remaining surfaces as spine-only with the user.
+- Guest checkout and payment/refund-status directions are rendered, checked and user-approved; references are promoted. See guest-checkout-notes.md. Financial-exception and spine-only coverage decisions remain open.
+- The financial-exception direction is rendered, checked, user-approved and promoted. Remaining supporting surfaces inherit existing layouts; the user approved written-only coverage on 26 October. Reviewer-gate choice remains open.
 - Validate guest-mobile and desktop-capable operations emphasis. No real-device, keyboard/screen-reader, browser or provider checks performed during drafting.
 - Exact public verification disclosure must match available evidence. Do not assume universal physical inspection.
 - Tax treatment, urgent support staffing/coverage, reserve funding, provider/account capabilities and live execution remain upstream release gates; UX copy cannot fill them with promises.

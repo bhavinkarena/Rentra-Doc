@@ -1,0 +1,126 @@
+﻿[
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-checkout.html",
+    "line": 0,
+    "snippet": "div \"Design preview · Example prices and poli\" uses jakarta sans; not declared in DESIGN.md typography",
+    "ignoreValue": "jakarta sans"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-checkout.html",
+    "line": 0,
+    "snippet": "border-top rgb(0, 0, 0) on div \"Razorpay Test paymentNo real money will \" is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "rgb(0, 0, 0)"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-checkout.html",
+    "line": 0,
+    "snippet": "Primary font: plus jakarta sans"
+  },
+  {
+    "antipattern": "design-system-font",
+    "name": "Font outside DESIGN.md",
+    "description": "A font is used that is not declared in DESIGN.md typography. Use the documented type system or update DESIGN.md if this is an intentional brand addition.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 0,
+    "snippet": "div \"Design preview · Example records · No pa\" uses jakarta sans; not declared in DESIGN.md typography",
+    "ignoreValue": "jakarta sans"
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 3,
+    "snippet": "border-radius 6px on span \"Payment checking · Test\" is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px"
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 3,
+    "snippet": "border-radius 9px on button \"Check payment status · preview\" is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "9px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 3,
+    "snippet": "font-size: 18px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "18px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 3,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 3,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 0,
+    "snippet": "Primary font: plus jakarta sans"
+  },
+  {
+    "antipattern": "aphoristic-cadence",
+    "name": "Aphoristic-cadence copy",
+    "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "C:\\Kunj\\Rentra\\Rentra-Doc\\_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\.working\\key-guest-booking-status.html",
+    "line": 0,
+    "snippet": "3 aphoristic constructions: \"This Test record has a verified Test capture and reserved inventory. No money wa\""
+  }
+]

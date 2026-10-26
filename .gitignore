@@ -9,6 +9,7 @@ __pycache__/
 !.env.example
 .working/.browser/
 **/.browser/
+.playwright-cli/
 *.log
 *.err
 .DS_Store

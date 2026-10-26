@@ -1,0 +1,154 @@
+{
+  "DESIGN.md": {
+    "file": "_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\DESIGN.md",
+    "total_words": 1972,
+    "sections": [
+      {
+        "heading": "(preamble)",
+        "level": 0,
+        "words": 451
+      },
+      {
+        "heading": "Rentra - Visual Design",
+        "level": 1,
+        "words": 0
+      },
+      {
+        "heading": "Brand & Style",
+        "level": 2,
+        "words": 180
+      },
+      {
+        "heading": "Colors",
+        "level": 2,
+        "words": 192
+      },
+      {
+        "heading": "Typography",
+        "level": 2,
+        "words": 110
+      },
+      {
+        "heading": "Layout & Spacing",
+        "level": 2,
+        "words": 204
+      },
+      {
+        "heading": "Elevation & Depth",
+        "level": 2,
+        "words": 50
+      },
+      {
+        "heading": "Shapes",
+        "level": 2,
+        "words": 41
+      },
+      {
+        "heading": "Components",
+        "level": 2,
+        "words": 577
+      },
+      {
+        "heading": "Do's and Don'ts",
+        "level": 2,
+        "words": 138
+      }
+    ]
+  },
+  "EXPERIENCE.md": {
+    "file": "_bmad-output\\planning-artifacts\\ux-designs\\ux-Rentra-2026-10-25\\EXPERIENCE.md",
+    "total_words": 4221,
+    "sections": [
+      {
+        "heading": "(preamble)",
+        "level": 0,
+        "words": 45
+      },
+      {
+        "heading": "Rentra - Experience",
+        "level": 1,
+        "words": 0
+      },
+      {
+        "heading": "Foundation",
+        "level": 2,
+        "words": 266
+      },
+      {
+        "heading": "Information Architecture",
+        "level": 2,
+        "words": 596
+      },
+      {
+        "heading": "Voice and Tone",
+        "level": 2,
+        "words": 238
+      },
+      {
+        "heading": "Component Patterns",
+        "level": 2,
+        "words": 518
+      },
+      {
+        "heading": "State Patterns",
+        "level": 2,
+        "words": 522
+      },
+      {
+        "heading": "Interaction Primitives",
+        "level": 2,
+        "words": 440
+      },
+      {
+        "heading": "Accessibility Floor",
+        "level": 2,
+        "words": 173
+      },
+      {
+        "heading": "Responsive & Platform",
+        "level": 2,
+        "words": 135
+      },
+      {
+        "heading": "Inspiration & Anti-patterns",
+        "level": 2,
+        "words": 80
+      },
+      {
+        "heading": "Inherited Timing Contracts",
+        "level": 2,
+        "words": 227
+      },
+      {
+        "heading": "Key Flows",
+        "level": 2,
+        "words": 33
+      },
+      {
+        "heading": "UJ-1: Raj gets his property approved and available to guests",
+        "level": 3,
+        "words": 178
+      },
+      {
+        "heading": "UJ-2: Priya finds and pays for a stay",
+        "level": 3,
+        "words": 242
+      },
+      {
+        "heading": "UJ-3: Kunj reviews an incident and resolves the guest request",
+        "level": 3,
+        "words": 134
+      },
+      {
+        "heading": "UJ-4: Raj repays his share after Rentra refunds the guest",
+        "level": 3,
+        "words": 136
+      },
+      {
+        "heading": "Requirement and Delivery Boundaries",
+        "level": 2,
+        "words": 171
+      }
+    ]
+  }
+}

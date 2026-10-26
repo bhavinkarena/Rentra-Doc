@@ -1,8 +1,8 @@
 ---
 project: Rentra
-status: draft
+status: final
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-26
 sources:
   - ../../prds/prd-Rentra-2026-10-25/prd.md
   - ../../prds/prd-Rentra-2026-10-25/addendum.md
@@ -209,15 +209,15 @@ components:
     padding: '20px'
 ---
 
-# Rentra — Visual Design Draft
+# Rentra - Visual Design
 
 ## Brand & Style
 
 Premium, trustworthy, relaxing, modern and simple. Preserve Rentra's delivered identity: sunlit property photography, Emerald Ink actions, warm light surfaces and Champagne used with restraint. Guest discovery invites a closer look; owner and admin workspaces make the next task obvious. Premium quality comes from clear hierarchy, careful image crops, readable totals and precise interaction feedback.
 
-This draft inherits the existing Rentra system on Tailwind 4 and shadcn/Radix. Frontmatter carries the existing token record, not a new palette. Unlisted primitives inherit the current application. Current runtime values in `Rentra/app/globals.css` describe what exists; approved later product decisions govern target behavior. Resolve discrepancies explicitly before implementation.
+This draft inherits the existing Rentra system on Tailwind 4 and shadcn/Radix. Frontmatter carries the existing token record, not a new palette. Unlisted primitives inherit the current application. Current runtime values in `../Rentra/app/globals.css` describe what exists; approved later product decisions govern target behavior. Resolve discrepancies explicitly before implementation.
 
-**Change threshold:** retain the incumbent unless a comparison demonstrates clearer information, easier action, stronger accessibility or more useful visual hierarchy. Taste and Impeccable inform the proposals; they do not override Rentra's established brand. No application code has been changed by this draft. These two spines take precedence over mockups once finalized; they remain drafts until open items and visual coverage are resolved.
+**Change threshold:** retain the incumbent unless a comparison demonstrates clearer information, easier action, stronger accessibility or more useful visual hierarchy. Taste and Impeccable inform the proposals; they do not override Rentra's established brand. These two spines govern approved visual and behavioral decisions when a mockup conflicts with them; the finalized PRD and later approved product decisions retain upstream authority. All shown references and remaining written-only coverage are approved. Design approval does not establish application implementation or production readiness.
 
 ## Colors
 
@@ -246,7 +246,7 @@ Inherit the 1280px page container, `{spacing.4}` phone gutters, `{spacing.6}` wi
 
 **Approved room composition:** photo first; details left and price right. The user approved the demonstrated mobile/desktop mockup. Show the room photograph above its information on phones, with a readable facts/total row beneath it. Keep a trailing total where it fits; stack price below details when text zoom or narrow width requires it. Larger screens can preserve useful side-by-side comparison. Do not sacrifice room identity, included meals, cancellation terms or full-trip context to force columns.
 
-The candidate addresses an observed source gap: current room-card images are hidden below `sm`. It does not justify replacing the working room/rate-plan selection flow. The existing property portfolio's photo-led cards and overview remain the owner baseline.
+The approved composition addresses an observed source gap: current room-card images are hidden below `sm`. It does not justify replacing the working room/rate-plan selection flow. The existing property portfolio's photo-led cards and overview remain the owner baseline.
 
 Approved visual direction: [photo-first hotel room mockup](mockups/key-hotel-rooms.html), compared with a [simplified source reconstruction](mockups/baseline-hotel-rooms.html). Both use labelled example content; the baseline is not a running-app screenshot. [Comparison notes](mockups/mockup-notes.md) describe scope and limitations. Approval covers presentation and demonstrated interactions; illustrative prices, policies and photography are not production listing data. Application behavior remains unchanged.
 
@@ -260,9 +260,15 @@ Inherit `{rounded.sm}` 8px, `{rounded.md}` 12px, `{rounded.lg}` 16px, `{rounded.
 
 ## Components
 
+Approved financial-exception reference: [admin refund-decision preview](mockups/key-admin-refund-decision.html) separates additional guest refund, cumulative responsibility and projected owner recovery. It inherits the approved admin shell and makes the guest amount visible early on phones. [Historical fixture, checks and limits](mockups/refund-decision-notes.md) apply. The user approved the demonstrated visual direction on 26 October; the financial workflow remains a planned implementation requirement.
+
+Approved guest checkout/status references: [checkout](mockups/key-guest-checkout.html) emphasizes the full selected-trip total, guest details and accepted terms; [booking/payment/refund tracking](mockups/key-guest-booking-status.html) distinguishes checking, confirmed and refund outcomes. [Scope and checks](mockups/guest-checkout-notes.md) apply. The user approved both demonstrated directions on 26 October. Data remains illustrative and financial commands are disabled.
+
+Approved admin visual references: [property verification review](mockups/key-admin-verification.html) and [booking-linked support](mockups/key-admin-support.html) retain the current full-page patterns and propose clearer evidence, next actions and separate domain states. [Scope and check results](mockups/admin-workflow-notes.md) distinguish current functionality, proposed presentation and planned incident handling. The user approved both demonstrated admin directions on 26 October.
+
 Approved owner setup direction: [Rooms](mockups/key-owner-rooms.html) and [Rates](mockups/key-owner-rates.html) preserve the current wizard and propose clearer field grouping and optional-detail disclosure. [Scope and existing behavior](mockups/owner-setup-notes.md) distinguish these visual references from delivered functionality. The user approved the demonstrated Rooms and Rates layouts.
 
-These names match EXPERIENCE.md. Existing native/shadcn primitives inherit their established specifications; the table describes product compositions and proposed deltas.
+These names match EXPERIENCE.md. Existing native/shadcn primitives inherit their established specifications; the table describes product compositions and approved presentation changes.
 
 | Component | Visual specification |
 |---|---|
@@ -288,4 +294,4 @@ These names match EXPERIENCE.md. Existing native/shadcn primitives inherit their
 | Keep meaningful policy/facility information accessible through clear disclosure. | Silently truncate the only facilities list or bury mandatory charges. |
 | Preserve accessible focus, pending/error recovery and unsaved-change protection. | Add motion that delays actions, shifts controls or hides uncertainty. |
 | Use real imagery, real states and real provider evidence. | Invent verification, urgency, ratings, availability or live payment success. |
-| Treat proposed layouts and timings as candidates until rendered and checked. | Present this draft as implementation completion or production readiness. |
+| Treat proposed layouts and timings as candidates until rendered and checked. | Present design approval as implementation completion or production readiness. |

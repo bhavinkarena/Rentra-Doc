@@ -29,7 +29,11 @@ Each developer needs access to all three repositories. Relative source links and
 | --- | --- |
 | Current work and continuation | [Team handoff](HANDOFF.md) |
 | Launch requirements | [Final PRD](_bmad-output/planning-artifacts/prds/prd-Rentra-2026-10-25/prd.md) |
-| UX work in progress | [Design](_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/DESIGN.md), [experience](_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/EXPERIENCE.md) |
+| Finalized UX contracts | [Design](_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/DESIGN.md), [experience](_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/EXPERIENCE.md) |
+| Current implementation evidence | [Story1.1 progress](_bmad-output/implementation-artifacts/story-1-1-progress.md) |
+| Implementation spec | [13-capability spec](_bmad-output/specs/spec-Rentra/SPEC.md), [coverage and existing/target boundaries](_bmad-output/specs/spec-Rentra/capability-map.md) |
+| Epic/story planning | [51-story backlog](_bmad-output/planning-artifacts/epics.md), [validation](_bmad-output/planning-artifacts/backlog-validation.md) |
+| Finalized architecture contract | [Architecture](_bmad-output/planning-artifacts/architecture/architecture-Rentra-2026-10-26/ARCHITECTURE-SPINE.md), [validation](_bmad-output/planning-artifacts/architecture/architecture-Rentra-2026-10-26/validation-report.md) |
 | Latest UX decisions | [Decision log](_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/.memlog.md) |
 | Customer implementation | [Sessions](frontend/docs/rentra-customer-sessions.md), [plan](frontend/docs/rentra-customer-plan.html) |
 | Client/admin implementation | [Sessions](frontend/docs/rentra-client-admin-sessions.md), [plan](frontend/docs/rentra-client-admin-plan.md) |
@@ -83,7 +87,7 @@ From `Rentra-Doc`, serve the saved UX `.working` directory:
 python -m http.server 8766 --bind 127.0.0.1 --directory _bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/.working
 ```
 
-The mockups are available at `http://127.0.0.1:8766/`. The saved `check-admin-mocks.js`, `check-owner-mocks.js` and `check-room-mocks.js` files in that directory are `async page => { ... }` Playwright callback snippets. Use an existing Playwright-capable browser/agent driver that accepts a page callback and supplies a browser `page`; they are not standalone Node executables. The driver needs Playwright and its browser available, with its process working directory set to `Rentra-Doc`. Screenshots are written relative to that cwd into `_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/.working/evidence/`; ensure that directory exists. The HTTP server alone does not execute the checks.
+The mockups are available at `http://127.0.0.1:8766/`. The saved `check-refund-decision-mock.js`, `check-guest-checkout-mocks.js`, `check-admin-mocks.js`, `check-owner-mocks.js` and `check-room-mocks.js` files in that directory are `async page => { ... }` Playwright callback snippets. Use an existing Playwright-capable browser/agent driver that accepts a page callback and supplies a browser `page`; they are not standalone Node executables. The driver needs Playwright and its browser available, with its process working directory set to `Rentra-Doc`. Screenshots are written relative to that cwd into `_bmad-output/planning-artifacts/ux-designs/ux-Rentra-2026-10-25/.working/evidence/`; ensure that directory exists. The HTTP server alone does not execute the checks.
 
 ## Migration verification
 

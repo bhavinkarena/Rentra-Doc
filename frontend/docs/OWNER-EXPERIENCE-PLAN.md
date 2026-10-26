@@ -1,5 +1,10 @@
 # Rentra Owner (Client/Host) Experience — Audit and Redesign Specification
 
+## 26October2026 - launch backlog Story1.1
+
+The user authorized batch story planning and implementation. [The launch backlog](../../_bmad-output/planning-artifacts/epics.md) now contains 51stories. A reviewed frontend draft-recovery patch is committed locally as `1b1058306573d714a3a9ef64fe33307786910b79`; 113 frontend tests and targeted lint/format pass. Broader pending-owner DB/browser acceptance is still open; this does not change historical phase/CP completion or pass CP32/Live gates. See [current evidence and continuation](../../_bmad-output/implementation-artifacts/story-1-1-progress.md).
+
+
 | | |
 |---|---|
 | Date | 2 October 2026 |

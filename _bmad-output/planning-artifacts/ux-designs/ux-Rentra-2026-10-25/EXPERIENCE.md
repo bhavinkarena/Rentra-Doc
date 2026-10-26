@@ -1,8 +1,8 @@
 ---
 project: Rentra
-status: draft
+status: final
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-10-26
 sources:
   - ../../prds/prd-Rentra-2026-10-25/prd.md
   - ../../prds/prd-Rentra-2026-10-25/addendum.md
@@ -23,19 +23,19 @@ sources:
   - ../../../../backend/docs/API.md
 ---
 
-# Rentra — Experience Draft
+# Rentra - Experience
 
 ## Foundation
 
-Responsive web for guests, owners and admins, with the existing caretaker surface retained where it supports review/visit evidence. Guest mobile emphasis and desktop-capable owner/admin tools are the user's starting assumption, pending journey/device validation. Inherit Tailwind 4, shadcn/Radix, existing route groups, APIs, validation, permissions and session behavior. [DESIGN.md](DESIGN.md) owns visual identity; behavioral specifications here reference its tokens.
+Responsive web for guests, owners and admins, with the existing caretaker surface retained where it supports review/visit evidence. Guest discovery is mobile-prioritized, with desktop-capable owner/admin tools. The user approved representative phone/desktop layouts; real-device usage and usability still require validation. Inherit Tailwind 4, shadcn/Radix, existing route groups, APIs, validation, permissions and session behavior. [DESIGN.md](DESIGN.md) owns visual identity; behavioral specifications here reference its tokens.
 
-Authority: finalized PRD, its addendum and the decision register are primary; later approved decisions override earlier proposals. Supporting brief/research and implementation records explain context. Current source establishes what exists, not what is commercially approved or production-ready. This draft captures approved rules by reference and proposes only necessary presentation deltas.
+Authority: finalized PRD, its addendum and the decision register are primary; later approved decisions override earlier proposals. Supporting brief/research and implementation records explain context. Current source establishes what exists, not what is commercially approved or production-ready. This contract captures approved rules by reference and records the accepted presentation changes.
 
 | Classification | Meaning and examples |
 |---|---|
 | Existing baseline | Discovery/saved places, authentication recovery, quotes/holds, hosted Test checkout, booking records, support/reviews and substantial owner/admin tools have implementation evidence. Hotel rooms/plans/date rates and manual approval exist. Preserve working behavior. |
 | Approved requirement; gap or unproven | New fee/payout alignment, richer child/bedding/pet policies, complete facilities, whole-apartment rules and expanded incident/recovery/review exceptions require implementation reconciliation. A design does not mark these delivered. |
-| Proposed UX delta | Optional cross-category type filtering and photo-first room presentation implement the user's direction; layout, advanced-setting disclosure and interaction refinements require comparison with the incumbent. |
+| Approved UX direction | Optional cross-category filtering and the demonstrated photo-first room, owner setup, admin and guest money/status layouts are approved. Further changes require comparison with the incumbent; specimen approval does not establish implementation or production readiness. |
 
 The improvement test is explicit: identify the current problem, compare the proposed screen at phone and desktop sizes, and retain it only if it improves comprehension/action without losing functionality, accessibility or truthful information. No wholesale replacement is authorized by the words “next level.”
 
@@ -66,7 +66,7 @@ Preserve existing supported routes and links; this is a logical surface map, not
 | Admin operations, content, access and audit | Existing capability-filtered navigation | Preserve existing health, privacy, export and governance tasks | Records + Review + Form |
 | Caretaker assignment and evidence | Existing authorized assignment | Support performed physical-check/visit evidence where applicable; UJ-1 | Records + Form + Review |
 
-Closure is provisional: existing supporting surfaces are retained rather than redesigned. No standalone new caretaker experience or new admin queue taxonomy is inferred. Final visual coverage must classify each surface as mocked or intentionally spine-only with the user.
+Visual coverage is approved: existing supporting surfaces retain their layouts and follow the written behavior/state rules. The user accepted the [20-surface coverage map](.working/final-mock-coverage.md), including the written-only portions of partially mocked flows. No standalone new caretaker experience or new admin queue taxonomy is inferred.
 
 ## Voice and Tone
 
@@ -81,10 +81,12 @@ Use plain action labels, exact scope and a supported next step. Brand voice live
 | Cancellation/refund | State booking cancellation separately from refund requested/processing/completed/failed. Include amount and reference when authoritative. |
 | Verification | Describe the actual document/video/physical checks performed. Unchecked or unavailable evidence does not become “verified.” |
 | Owner draft/corrections | “Draft saved” does not imply submitted. “Resubmit for review” is a separate action. |
-| Support | Acknowledge receipt and current next step; do not promise 24/7 coverage or guaranteed resolution while staffing is unresolved. |
+| Support | Acknowledge receipt and next step; preserve the approved 12-elapsed-hour initial human response commitment. Resolution is separate; support hours and urgent/on-call coverage must be established before launch. |
 | Payout/recovery | Recorded initiation is not bank settlement. Owner repayment is separate from future payouts. |
 
 ## Component Patterns
+
+Approved admin interaction references: [verification](mockups/key-admin-verification.html) shows submitted evidence, revision-specific reasons and separate publication/bookability states; [support](mockups/key-admin-support.html) separates guest replies from internal notes and keeps booking/payment/refund context distinct. Internal-note mode hides status-changing controls. All operational commands remain disabled in these offline specimens. [Limitations and continuation](mockups/admin-workflow-notes.md) apply; the user approved both demonstrated directions on 26 October.
 
 Owner setup interaction references: [Rooms](mockups/key-owner-rooms.html) and [Rates](mockups/key-owner-rates.html) show editable native fields, optional-detail disclosures and local step navigation. Saving and operational commands are disabled in these specimens; preserve production guards and server validation. [Preview limits](mockups/owner-setup-notes.md) apply; the user approved the demonstrated Rooms and Rates direction.
 
@@ -96,7 +98,7 @@ Component names match DESIGN.md. These are behavioral rules above the inherited 
 | Search and filters | Category choice is optional. Preserve location/dates/party and selected type across navigation where supported. Expose applied filters and clear/remove actions. Category filtering must not silently reset valid trip inputs. |
 | Listing card | Open property through its primary link; Save is independently operable. Display server-backed verification/rating and honest missing states. Dated price context must match the trip. |
 | Room card and rate plan | Let Priya compare room identity, beds/capacity, included meals, cancellation and total before selecting quantity/offer. Preserve server availability and existing quantity guards. Advanced facts may be disclosed, but mandatory constraints/charges cannot be hidden. |
-| Forms and setup | Keep labels, field errors and entered values. Save draft and submit/resubmit remain distinct. Proposed optional advanced controls inherit visible defaults and explicit overrides, without hiding required child/bedding/cancellation configuration. Preserve unsaved-change guards. |
+| Forms and setup | Keep labels, field errors and entered values. Save draft and submit/resubmit remain distinct. Additional advanced controls inherit visible defaults and explicit overrides, without hiding required child/bedding/cancellation configuration. Preserve unsaved-change guards. |
 | Calendar | Retain existing keyboard/date selection, property-local dates, open/close commands and rate overrides. Do not equate payment-unavailable with date-unavailable. Preserve owner nested-dialog/unsaved-change behavior where already implemented. |
 | Booking summary | Reflect the authoritative selected-trip quote, mandatory known charges, tax status, policies and environment. Show one fee-inclusive total with understandable breakdown. Requote changed inputs/versions; require review before proceeding on a changed quote. |
 | State badge and trust details | Keep domain-specific state labels; do not flatten booking/payment/refund/payout or owner/property states into a generic enum. Expose explanatory checks and next action only where evidence/permissions support them. |
@@ -126,9 +128,15 @@ Special states: owner identity, property approval, publication completeness, pau
 
 ## Interaction Primitives
 
+Approved financial-exception reference: [refund decision](mockups/key-admin-refund-decision.html) illustrates UJ-3/UJ-4 using two frozen responsibility comparisons at the same 100% cumulative guest target. Switching allocation changes owner/Rentra responsibility and projected recovery, not additional guest money. The reason is locally editable; the target and amounts are static examples. All review/confirmation/collection commands are disabled. [Fixture and limits](mockups/refund-decision-notes.md) apply; user visual approval was recorded on 26 October.
+
+Approved guest flow references: [checkout](mockups/key-guest-checkout.html) and [booking/payment/refund status](mockups/key-guest-booking-status.html) illustrate UJ-2 acceptance, disclosures and separate money/booking facts. Review-only radio controls select static example records, not application transitions. All financial commands remain disabled; production quote, hold, policy and recovery behavior is inherited. [Check results and limits](mockups/guest-checkout-notes.md) apply. The user approved the demonstrated guest directions on 26 October.
+
+Status-specific fixture limits are recorded in [guest-status notes](mockups/guest-status-notes.md); the four review scenarios are static examples, not live transaction controls.
+
 Approved hotel interaction direction: [hotel room selection](mockups/key-hotel-rooms.html) demonstrates native offer selection, matching example totals, facilities/price disclosures and narrow-screen summary access. [Baseline comparison and limits](mockups/mockup-notes.md) distinguish the simplified one-room specimen from existing quantity, inventory and payment behavior. Preserve those production rules when implementing the approved direction. This is not a functional booking implementation.
 
-Preserve existing behavior first. The user's “top level interaction” direction is interpreted as purposeful, responsive feedback and continuity; the following refinements are **proposed**, pending incumbent/preview comparison.
+Preserve existing behavior first. The user's “top level interaction” direction is interpreted as purposeful, responsive feedback and continuity; the demonstrated refinements are approved. Further changes must pass the incumbent comparison before replacing working behavior.
 
 | Interaction | Intended refinement / boundary |
 |---|---|
@@ -160,7 +168,7 @@ Target WCAG 2.2 AA across supported responsive web surfaces; this is a requireme
 | Tablet | Preserve useful comparison space; collapse operational navigation according to existing shell behavior. Do not squeeze multiple panes below readable widths. |
 | Desktop | Guest comparison may use a summary rail; owner/admin retain task-dense lists, forms and contextual detail. Keep the current portfolio photo treatment. |
 
-Use current breakpoints rather than inventing a second responsive system. Validate at least 320/390/768/1024/1440px and keyboard/zoom, then real iOS Safari/Android Chrome before release. The exact device emphasis remains a user-provided assumption; no native app or offline booking capability is implied.
+Use current breakpoints rather than inventing a second responsive system. Validate at least 320/390/768/1024/1440px and keyboard/zoom, then real iOS Safari/Android Chrome before release. The approved device emphasis is a design choice, not measured usage evidence; no native app or offline booking capability is implied.
 
 ## Inspiration & Anti-patterns
 
@@ -168,9 +176,23 @@ Airbnb and hotel-booking platforms are references for familiar discovery, photo-
 
 Taste contributes intentional hierarchy, product-specific imagery and restraint; Impeccable contributes coherent task flow, state completeness, responsive craft and bounded visual validation. Inherit Rentra's palette/type/sidebar even where a generic style rule would suggest a different identity. Reject hidden charges, misleading verification, fake scarcity, overcrowded forms and changes made only for novelty.
 
+
+## Inherited Timing Contracts
+
+These approved source rules are explicit timing constraints, not new defaults. Use authoritative property-local instants and recorded receipt evidence; implementation must preserve the booked/versioned rule.
+
+| Flow | Timing contract |
+|---|---|
+| Manual booking request | Owner response window up to 24 hours, followed by 12 hours to pay after approval; both capped by arrival. Approval does not confirm a booking. |
+| Guest issue report | Normal reporting target: 72 hours from discovery, with approved exceptions. Access/safety issues require prompt urgent escalation; late evidence is assessed under the source rules rather than automatically rejected. |
+| Support first response | Human initial response within 12 elapsed hours; resolution is separate. Staffing, published support hours and urgent/on-call coverage must support this commitment before launch; no invented 24/7 claim. |
+| Guest reviews | Preserve the 30-day review window, invitation after checkout and one day-7 reminder. Eligibility and reviewed arrival-without-stay exceptions follow the PRD; no owner veto. |
+| Owner corrections | Reviewer reminders at 7, 15 and 30 days from the original correction request. Draft save is not resubmission. |
+| Owner recovery | Reminder on day 5 and repayment due by day 7 from evidenced receipt, not mere sending. An unpaid overdue blocking balance restricts owner-wide new bookings; verified full repayment clears only that restriction. Replacing a link does not restart the original clock. |
+
 ## Key Flows
 
-These preserve the PRD's named examples and titles. Steps are a draft UX interpretation of those founder flows, not new interviewed-user evidence. Detailed composition/interaction proposals remain subject to comparison.
+These preserve the PRD's named examples and titles. The steps express the approved experience contract, not new interviewed-user evidence. Demonstrated layouts are approved; changes beyond those references still require comparison with the incumbent.
 
 ### UJ-1: Raj gets his property approved and available to guests
 
@@ -199,7 +221,7 @@ Failure: unavailable dates, expired hold or changed quote preserve recoverable s
 
 1. Kunj opens a booking-linked issue with discovery time, affected rooms/nights, requested remedy and credible available evidence. The guest need not wait for an owner response first.
 2. Authorized staff assess the issue, related booking/policy and prior refunds; internal notes and private attachments remain protected.
-3. Kunj declines with reason or chooses the approved cumulative 0–100 refund target and proportional/owner-funded responsibility separately.
+3. Kunj declines with reason or chooses the approved cumulative 0–100% refund target and proportional/owner-funded responsibility separately.
 4. Review and confirm shows additional guest money due separately from historical responsibility reassignment, affected records and audit reason.
 5. **Climax:** the persisted decision and guest-facing next step are visible; refund initiation, provider completion and any owner obligation remain distinct tracked outcomes.
 
@@ -228,4 +250,4 @@ Failure: incomplete/unknown repayment does not clear the obligation. Provider co
 | FR-19–21 | UJ-2 support/reviews and UJ-3 incident review |
 | FR-22–24 | UJ-1 hotel setup/calendar and UJ-2 selection/authentication/booking records |
 
-Hotel room visual direction is approved following the source-reconstruction/proposal comparison. Open items before finalization: remaining key-screen mock coverage; exact evidence-backed verification disclosure wording; broader device emphasis validation; reviewer-gate choice. Approval of a simplified specimen does not replace testing the running application. Operational support coverage, tax treatment, live provider/account capabilities, reserve funding and legal/local evidence constraints remain upstream release dependencies. Do not solve them by inventing UX promises.
+All demonstrated visual directions and the remaining written-only coverage are approved. The selected rubric, accessibility/responsive and money/status reviews are complete; findings are resolved and source reconciliation/editorial polish are recorded in the validation report. Approval of a simplified specimen does not replace testing the running application. Evidence-derived verification copy, real-device usability, operational support coverage, tax treatment, live provider/account capabilities, reserve funding and legal/local evidence constraints remain implementation/release dependencies. Do not solve them by inventing UX promises.

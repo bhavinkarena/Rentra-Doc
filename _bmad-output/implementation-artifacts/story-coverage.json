@@ -1,0 +1,950 @@
+{
+  "mode": "user-authorized-batch",
+  "preserved": [
+    "1.1",
+    "1.2",
+    "1.3"
+  ],
+  "stories": [
+    {
+      "id": "1.4",
+      "title": "Arrange and record selective physical verification",
+      "fr": [
+        2
+      ],
+      "ux": [
+        13,
+        14,
+        24,
+        34
+      ],
+      "deps": [
+        "1.2"
+      ]
+    },
+    {
+      "id": "1.5",
+      "title": "Send specific property correction requests",
+      "fr": [
+        3
+      ],
+      "ux": [
+        10,
+        14,
+        15,
+        24,
+        34
+      ],
+      "deps": [
+        "1.2"
+      ]
+    },
+    {
+      "id": "1.6",
+      "title": "Save corrections privately and explicitly resubmit",
+      "fr": [
+        3,
+        5
+      ],
+      "ux": [
+        10,
+        21,
+        24,
+        34
+      ],
+      "deps": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "id": "1.7",
+      "title": "Deliver response and unanswered-correction alerts",
+      "fr": [
+        4
+      ],
+      "ux": [
+        14,
+        16,
+        24,
+        39
+      ],
+      "deps": [
+        "1.5",
+        "1.6"
+      ]
+    },
+    {
+      "id": "1.8",
+      "title": "Reject with reason and retain same-listing history",
+      "fr": [
+        5
+      ],
+      "ux": [
+        13,
+        14,
+        15,
+        24,
+        34
+      ],
+      "deps": [
+        "1.2",
+        "1.6"
+      ]
+    },
+    {
+      "id": "2.1",
+      "title": "Approve ready properties and explain restrictions",
+      "fr": [
+        6
+      ],
+      "ux": [
+        13,
+        14,
+        15,
+        24,
+        34
+      ],
+      "deps": [
+        "1.2",
+        "1.8"
+      ],
+      "gate": "Local proof sufficiency and supported category readiness remain required"
+    },
+    {
+      "id": "2.2",
+      "title": "Configure and quote one inclusive service fee",
+      "fr": [
+        8,
+        12
+      ],
+      "ux": [
+        12,
+        15,
+        25,
+        36
+      ],
+      "deps": [
+        "2.1"
+      ],
+      "gate": "Actual contracted gateway costs and accounting remain gates"
+    },
+    {
+      "id": "2.3",
+      "title": "Retain accepted trip terms through login",
+      "fr": [
+        12,
+        15,
+        24
+      ],
+      "ux": [
+        10,
+        12,
+        20,
+        22,
+        36
+      ],
+      "deps": [
+        "2.2"
+      ],
+      "gate": "Existing authentication contracts retained"
+    },
+    {
+      "id": "2.4",
+      "title": "Hold eligible inventory and respect booking modes",
+      "fr": [
+        23
+      ],
+      "ux": [
+        11,
+        20,
+        25,
+        39
+      ],
+      "deps": [
+        "2.1",
+        "2.3"
+      ],
+      "gate": "Disposable database concurrency evidence required"
+    },
+    {
+      "id": "2.5",
+      "title": "Verify full payment and recover uncertain checkout",
+      "fr": [
+        15,
+        23,
+        24
+      ],
+      "ux": [
+        12,
+        20,
+        25,
+        36,
+        37
+      ],
+      "deps": [
+        "2.3",
+        "2.4"
+      ],
+      "gate": "Provider/account and signed hosted Test evidence before financial sign-off; no Live authorization"
+    },
+    {
+      "id": "2.6",
+      "title": "Configure percentage cancellation and plan inheritance",
+      "fr": [
+        9,
+        10
+      ],
+      "ux": [
+        10,
+        12,
+        15,
+        33
+      ],
+      "deps": [
+        "2.3"
+      ],
+      "gate": "Tax component acceptance remains specialist-gated"
+    },
+    {
+      "id": "2.7",
+      "title": "Preview exact booked-policy refunds",
+      "fr": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "ux": [
+        12,
+        15,
+        25
+      ],
+      "deps": [
+        "2.5",
+        "2.6"
+      ],
+      "gate": "Specialist accounting does not alter guest entitlement silently"
+    },
+    {
+      "id": "2.8",
+      "title": "Confirm cancellation and reserve eligible refund",
+      "fr": [
+        9,
+        11
+      ],
+      "ux": [
+        15,
+        16,
+        25,
+        37
+      ],
+      "deps": [
+        "2.7"
+      ],
+      "gate": "No Live refund initiation until provider/funding gates pass"
+    },
+    {
+      "id": "2.9",
+      "title": "Dispatch refunds and reconcile verified outcomes",
+      "fr": [
+        7,
+        11,
+        15
+      ],
+      "ux": [
+        14,
+        16,
+        25,
+        37
+      ],
+      "deps": [
+        "2.8"
+      ],
+      "gate": "Actual partial/old-payment and hosted capability evidence required"
+    },
+    {
+      "id": "2.10",
+      "title": "Cancel selected rooms without repricing retained rooms",
+      "fr": [
+        9,
+        10,
+        11
+      ],
+      "ux": [
+        9,
+        12,
+        15,
+        25
+      ],
+      "deps": [
+        "2.6",
+        "2.7",
+        "2.9"
+      ],
+      "gate": "Existing common financial gate applies"
+    },
+    {
+      "id": "2.11",
+      "title": "End stays using booked unused-night rules",
+      "fr": [
+        9
+      ],
+      "ux": [
+        12,
+        15,
+        20,
+        25
+      ],
+      "deps": [
+        "2.7",
+        "2.9",
+        "2.10"
+      ],
+      "gate": "Unused-night acceptance fixtures and accounting required"
+    },
+    {
+      "id": "2.12",
+      "title": "Control effective payout modes and eligibility",
+      "fr": [
+        13
+      ],
+      "ux": [
+        14,
+        15,
+        25
+      ],
+      "deps": [
+        "2.5",
+        "2.9"
+      ],
+      "gate": "Provider eligibility remains required"
+    },
+    {
+      "id": "2.13",
+      "title": "Initiate and reconcile eligible owner payouts",
+      "fr": [
+        13,
+        15
+      ],
+      "ux": [
+        14,
+        16,
+        25
+      ],
+      "deps": [
+        "2.9",
+        "2.12"
+      ],
+      "gate": "Funding/exposure, provider transfer, accounting and hosted evidence block financial acceptance"
+    },
+    {
+      "id": "2.14",
+      "title": "Pause new bookings while retaining commitments",
+      "fr": [
+        6,
+        23
+      ],
+      "ux": [
+        13,
+        14,
+        15,
+        25
+      ],
+      "deps": [
+        "2.1",
+        "2.4",
+        "2.13"
+      ],
+      "gate": "Existing owner/admin restrictions remain composed"
+    },
+    {
+      "id": "2.15",
+      "title": "Cancel upcoming owner stays with full entitlement",
+      "fr": [
+        6,
+        7
+      ],
+      "ux": [
+        14,
+        15,
+        25,
+        37
+      ],
+      "deps": [
+        "2.9",
+        "2.10",
+        "2.13",
+        "2.14"
+      ],
+      "gate": "Real money remains gated"
+    },
+    {
+      "id": "2.16",
+      "title": "Show distinct guest owner and admin money records",
+      "fr": [
+        13,
+        14,
+        15,
+        24
+      ],
+      "ux": [
+        14,
+        16,
+        23,
+        25,
+        37
+      ],
+      "deps": [
+        "2.9",
+        "2.13",
+        "2.15"
+      ],
+      "gate": "No preview is bank evidence"
+    },
+    {
+      "id": "2.17",
+      "title": "Assign owner recovery after funded guest refunds",
+      "fr": [
+        14
+      ],
+      "ux": [
+        14,
+        15,
+        25
+      ],
+      "deps": [
+        "2.9",
+        "2.13",
+        "2.16"
+      ],
+      "gate": "Owner terms/accounting remain gated"
+    },
+    {
+      "id": "2.18",
+      "title": "Generate and verify owner repayment links",
+      "fr": [
+        14
+      ],
+      "ux": [
+        12,
+        14,
+        15,
+        25
+      ],
+      "deps": [
+        "2.17"
+      ],
+      "gate": "Repayment product/security and signed hosted Test evidence required"
+    },
+    {
+      "id": "2.19",
+      "title": "Record evidenced repayment notice receipt",
+      "fr": [
+        14
+      ],
+      "ux": [
+        14,
+        16,
+        25,
+        39
+      ],
+      "deps": [
+        "2.18"
+      ],
+      "gate": "Actual receipt channel/privacy capability must be validated"
+    },
+    {
+      "id": "2.20",
+      "title": "Restrict overdue owners and clear only settled debt",
+      "fr": [
+        6,
+        14,
+        23
+      ],
+      "ux": [
+        13,
+        14,
+        25,
+        39
+      ],
+      "deps": [
+        "2.1",
+        "2.4",
+        "2.18",
+        "2.19"
+      ],
+      "gate": "Receipt/funding/provider gates still apply"
+    },
+    {
+      "id": "2.21",
+      "title": "Demonstrate financial release gates without unsafe enablement",
+      "fr": [
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        23,
+        24
+      ],
+      "ux": [
+        25,
+        37,
+        39,
+        41,
+        42
+      ],
+      "deps": [
+        "2.5",
+        "2.9",
+        "2.10",
+        "2.11",
+        "2.13",
+        "2.15",
+        "2.18",
+        "2.20"
+      ],
+      "gate": "External evidence blocks financial release; fail-closed engineering can proceed"
+    },
+    {
+      "id": "3.1",
+      "title": "Browse categories while retaining guest search context",
+      "fr": [
+        8,
+        24
+      ],
+      "ux": [
+        7,
+        8,
+        18,
+        19,
+        20
+      ],
+      "deps": [
+        "2.2",
+        "2.3",
+        "2.4"
+      ],
+      "gate": "Existing guest identity and financial gates preserved"
+    },
+    {
+      "id": "3.2",
+      "title": "Compare photo-first rooms and complete facilities",
+      "fr": [
+        8,
+        22
+      ],
+      "ux": [
+        8,
+        9,
+        17,
+        19,
+        20
+      ],
+      "deps": [
+        "3.1"
+      ],
+      "gate": "Approved mock comparison and actual runtime usability required"
+    },
+    {
+      "id": "3.3",
+      "title": "Configure accurate rooms offers and inclusions",
+      "fr": [
+        22
+      ],
+      "ux": [
+        9,
+        10,
+        33
+      ],
+      "deps": [
+        "2.6",
+        "3.2"
+      ],
+      "gate": "No generic new wizard or theme"
+    },
+    {
+      "id": "3.4",
+      "title": "Quote fixed or percentage bedding per night",
+      "fr": [
+        22
+      ],
+      "ux": [
+        9,
+        12,
+        20,
+        33
+      ],
+      "deps": [
+        "2.2",
+        "2.3",
+        "3.3"
+      ],
+      "gate": "Accepted bedding fixtures required"
+    },
+    {
+      "id": "3.5",
+      "title": "Apply effective date rates and safe calendar edits",
+      "fr": [
+        22,
+        23
+      ],
+      "ux": [
+        10,
+        11,
+        33
+      ],
+      "deps": [
+        "2.4",
+        "3.3",
+        "3.4"
+      ],
+      "gate": "Existing calendar contracts retained"
+    },
+    {
+      "id": "3.6",
+      "title": "Configure explicit child age and accommodation policies",
+      "fr": [
+        16
+      ],
+      "ux": [
+        10,
+        20,
+        33
+      ],
+      "deps": [
+        "3.3"
+      ],
+      "gate": "Actual check-in/supervision and cot supply evidence before family release"
+    },
+    {
+      "id": "3.7",
+      "title": "Price actual child ages with room-local adults",
+      "fr": [
+        16
+      ],
+      "ux": [
+        9,
+        12,
+        20
+      ],
+      "deps": [
+        "3.4",
+        "3.5",
+        "3.6"
+      ],
+      "gate": "Validated family eligibility and inventory required"
+    },
+    {
+      "id": "3.8",
+      "title": "Configure ordinary pet eligibility and fee units",
+      "fr": [
+        17
+      ],
+      "ux": [
+        10,
+        12,
+        33
+      ],
+      "deps": [
+        "2.2",
+        "3.3"
+      ],
+      "gate": "Specialist assistance-animal accommodation/exemption/documentation remains required"
+    },
+    {
+      "id": "3.9",
+      "title": "Declare pets and include their complete trip charge",
+      "fr": [
+        8,
+        17
+      ],
+      "ux": [
+        7,
+        9,
+        12,
+        20
+      ],
+      "deps": [
+        "3.1",
+        "3.8"
+      ],
+      "gate": "Same specialist pet-policy gate applies"
+    },
+    {
+      "id": "3.10",
+      "title": "Configure exclusive whole-apartment stays",
+      "fr": [
+        18
+      ],
+      "ux": [
+        10,
+        11,
+        33
+      ],
+      "deps": [
+        "2.1",
+        "2.3",
+        "2.4"
+      ],
+      "gate": "Actual supported duration/lead-time/local boundary before apartment release"
+    },
+    {
+      "id": "3.11",
+      "title": "Book apartments with exclusive stock and buffers",
+      "fr": [
+        8,
+        18,
+        23
+      ],
+      "ux": [
+        7,
+        12,
+        20,
+        36
+      ],
+      "deps": [
+        "2.10",
+        "2.11",
+        "3.9",
+        "3.10"
+      ],
+      "gate": "Apartment eligibility and concurrency evidence required"
+    },
+    {
+      "id": "3.12",
+      "title": "Verify suitable-stay journeys across categories and devices",
+      "fr": [
+        8,
+        16,
+        17,
+        18,
+        22,
+        24
+      ],
+      "ux": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        17,
+        18,
+        19,
+        20,
+        33,
+        40,
+        41,
+        42
+      ],
+      "deps": [
+        "3.2",
+        "3.5",
+        "3.7",
+        "3.9",
+        "3.11"
+      ],
+      "gate": "Missing device/traffic/load evidence remains open rather than certified"
+    },
+    {
+      "id": "4.1",
+      "title": "Raise a contextual issue without waiting for the owner",
+      "fr": [
+        19
+      ],
+      "ux": [
+        10,
+        14,
+        21,
+        35
+      ],
+      "deps": [
+        "2.16"
+      ],
+      "gate": "No new parallel ticket/email-ingestion product"
+    },
+    {
+      "id": "4.2",
+      "title": "Route urgent cases with truthful support commitments",
+      "fr": [
+        19
+      ],
+      "ux": [
+        16,
+        21,
+        35,
+        39,
+        42
+      ],
+      "deps": [
+        "4.1"
+      ],
+      "gate": "Founder/operations support and urgent/on-call coverage before guest support release"
+    },
+    {
+      "id": "4.3",
+      "title": "Separate guest replies from private internal notes",
+      "fr": [
+        19,
+        20
+      ],
+      "ux": [
+        14,
+        15,
+        21,
+        24,
+        35
+      ],
+      "deps": [
+        "4.1"
+      ],
+      "gate": "Backend command audience/state boundary required"
+    },
+    {
+      "id": "4.4",
+      "title": "Review evidence and preview cumulative incident remedies",
+      "fr": [
+        20
+      ],
+      "ux": [
+        14,
+        15,
+        25,
+        35,
+        38
+      ],
+      "deps": [
+        "2.7",
+        "2.17",
+        "4.1",
+        "4.3"
+      ],
+      "gate": "Accounting and owner terms cannot be invented"
+    },
+    {
+      "id": "4.5",
+      "title": "Execute incident awards through the owned financial core",
+      "fr": [
+        20
+      ],
+      "ux": [
+        15,
+        16,
+        25,
+        38
+      ],
+      "deps": [
+        "2.9",
+        "2.18",
+        "2.20",
+        "4.4"
+      ],
+      "gate": "Enforceable owner consent, tax/accounting, funding/provider evidence before financial acceptance"
+    },
+    {
+      "id": "4.6",
+      "title": "Track case and financial resolution separately",
+      "fr": [
+        19,
+        20
+      ],
+      "ux": [
+        13,
+        14,
+        16,
+        23,
+        25,
+        35,
+        37,
+        38
+      ],
+      "deps": [
+        "4.2",
+        "4.3",
+        "4.5"
+      ],
+      "gate": "Existing operations/audit/supporting surfaces preserved"
+    },
+    {
+      "id": "5.1",
+      "title": "Publish genuine eligible stay reviews after checks",
+      "fr": [
+        21
+      ],
+      "ux": [
+        8,
+        14,
+        16,
+        21,
+        23
+      ],
+      "deps": [
+        "2.16"
+      ],
+      "gate": "Ordinary review baseline retained"
+    },
+    {
+      "id": "5.2",
+      "title": "Review arrived-but-unable-to-stay eligibility",
+      "fr": [
+        21
+      ],
+      "ux": [
+        14,
+        15,
+        21,
+        24
+      ],
+      "deps": [
+        "4.1",
+        "4.6",
+        "5.1"
+      ],
+      "gate": "Review moderation/eligibility contract required"
+    },
+    {
+      "id": "5.3",
+      "title": "Invite reviews and send one scheduled reminder",
+      "fr": [
+        21
+      ],
+      "ux": [
+        16,
+        23,
+        39
+      ],
+      "deps": [
+        "5.1",
+        "5.2"
+      ],
+      "gate": "Delivery channel configuration must be demonstrated"
+    },
+    {
+      "id": "5.4",
+      "title": "Moderate reported reviews without owner veto",
+      "fr": [
+        21
+      ],
+      "ux": [
+        8,
+        14,
+        15,
+        21,
+        24,
+        42
+      ],
+      "deps": [
+        "5.1",
+        "5.2",
+        "5.3"
+      ],
+      "gate": "Existing review governance preserved"
+    }
+  ]
+}
