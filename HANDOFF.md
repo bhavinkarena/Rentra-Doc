@@ -38,7 +38,7 @@ What the story delivers:
 
 Details: [spec, triage and verification](_bmad-output/implementation-artifacts/spec-1-3-property-video-evidence.md).
 
-Commits: backend `42d9c566514a0b6ba91a2acd10a169e54299b59d`, frontend `00dc3dc8e43dc5ab1b65b44056d9bc4ebdae1bd9`. Both are **local and unpushed** on purpose.
+Commits: backend `42d9c566514a0b6ba91a2acd10a169e54299b59d`, frontend `00dc3dc8e43dc5ab1b65b44056d9bc4ebdae1bd9`. **Released 26 October:** the user applied migration 0071 to Neon. A read-only check afterwards showed 72 applied migrations and the `property_evidence_request` table present. The frontend, backend and docs were then pushed. Hosted acceptance was not checked.
 
 Checks:
 - Backend: 327 passed, 0 failed, 0 skipped.
@@ -55,7 +55,9 @@ Checks:
 
 Pushing the backend before step 1 breaks the admin property review detail, because `readPropertyReview` reads the new table.
 
-**Exact next action:** ask the user to approve the Neon migration and push for Story 1.3, or continue to Story 1.4 (arrange and record selective physical verification) from [epics.md](_bmad-output/planning-artifacts/epics.md) through `bmad-build`, keeping the Story 1.3 commits unpushed.
+**Remaining release gate:** steps 1–3 below are done. Still required: demonstrate a real Cloudinary authenticated video upload, metadata read and signed playback, then set `EVIDENCE_VIDEO_UPLOADS=true` on Render. Until then, video requests are refused as not enabled.
+
+**Exact next action:** smoke-check the hosted admin property review detail after the Render deploy, then continue to Story 1.4 (arrange and record selective physical verification) from [epics.md](_bmad-output/planning-artifacts/epics.md) through `bmad-build`.
 
 ### Story 1.1 complete; Story 1.2 complete locally - 26 October 2026
 
