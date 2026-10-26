@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.9 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.10 session.
 
 ## Start here
 
@@ -19,6 +19,29 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.10 complete locally; Story 2.11 next - 26 October 2026
+
+Continued with bmad-build and the existing standing authorization. Recovered the docs checkpoint by fetching and fast-forwarding from `9c2ff58bc9d1e5f88355074dd1cbc62af1f5861b` to `fd429dd19f29f2b7dd88bfa1957d23ad4ad193fc`; the frontend/backend HEADs matched its Story2.9/2.8 commits before changes. The README's `python -m uv` fallback works on this machine.
+
+The existing selected-room flow was reused. Fixed capture-capacity allocation, selected-only booked-policy evaluation, a check-in transition guard, legacy fee scope, specific refusal messages and hotel policy/receipt presentation. Retained room snapshots and inventory remain unchanged. No migration or dependency was added.
+
+**User decisions:**
+- Historical refunds without room attribution require admin resolution before room cancellation; do not guess or redistribute them. The guard also prevents bypass through cancellation of the whole remaining stay.
+- Apply booked positive at/after-check-in percentages consistently for selected rooms and whole hotel stays. Preserve the recorded Story2.6 at/after0% and legacy support-only restrictions.
+
+**Evidence:** backend **348/348**, frontend **120/120**, zero failures/skips. Tests used a new disposable localhost PostgreSQL17 cluster with both test URLs explicit and an unusable application URL; Neon was not used. Focused money/room tests cover mixed policies, unchanged retained snapshots, all affected nights, prior/ambiguous/failed refunds, multi-capture capacity, ownership/foreign scope, stale/replay/overlap/distinct-room races, zero money and deterministic check-in-crossing rollback. Component tests cover policy/amount labels, unique room identity, consent/reset, lost-response identical retry, legacy rules and last-room receipts.
+
+Targeted configured ESLint/Prettier, service syntax checks, whitespace checks and the 76-file migration journal check passed. Backend service files remain excluded by their existing lint/format configuration. Three independent review layers completed; all actionable findings fixed and reviewers confirmed closure. One mixed legacy/window finding was dismissed under the accepted atomic-snapshot invariant; none deferred.
+
+**Local, unpushed commits:**
+- Backend: `9a7501d991604c45e775e69c5c4b5054c3183872`.
+- Frontend: `3621f649a5da66d19d5077502a3bdf74c7916a23`.
+- Matching docs are recorded in this checkpoint commit. [Spec, tests and triage](_bmad-output/implementation-artifacts/spec-2-10-selected-room-cancellation.md).
+
+**Not checked:** browser/responsive/device/screen-reader acceptance, production builds, hosted acceptance or real providers. No push, hosted migration, bank/provider operation or deployment. Existing provider refund limits/timing, GST/accounting, gateway costs, outdated 8% publication, discovery cancellation filter and dispute-cap gates remain open. This is local engineering completion, not Live readiness.
+
+**Exact next action:** Story2.11 through bmad-build. Read its ACs and run the read-only gap analysis on `domain/cancellation-policy.js`, `booking/hotel-stays.js`, `booking/cancellation.js`, booked night allocations and room inventory triggers. Only early-departure configuration/editor exists; no execution command was found. Preserve strictly later nightly starts as unused, original allocations, explicit confirmation and no automatic entitlement at zero refund. Continue with the smallest supported command/state contract and independent financial review. Do not repeat per-story approval.
 
 ### Story 2.9 complete; provider evidence gate open - 26 October 2026
 
