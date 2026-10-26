@@ -32,7 +32,7 @@ When this migration is committed, record the matching code/docs commit or PR lin
   - New hold and payment evidence tests.
   - [spec](_bmad-output/implementation-artifacts/spec-2-2-to-2-5-fee-quote-hold-payment.md)
 
-Commits: backend `880e8bb64cc212559bff895e5c089038b54de0d8`, frontend `e4c5f46d702699ed13052245a20f1bf37cfa8b74`, both **unpushed**. Checks: backend 334 of 334, frontend 115 of 115.
+Commits: backend `880e8bb64cc212559bff895e5c089038b54de0d8`, frontend `e4c5f46d702699ed13052245a20f1bf37cfa8b74`. **Released 26 October:** the user applied 0074 (a read-only check showed 75 migrations and the global 5% row) and both repositories were pushed. The policy text still needs a new version. Checks: backend 334 of 334, frontend 115 of 115.
 
 **Release order:**
 1. The user runs `npm run db:migrate` in `rentra-backend`. Neon is at 0073, so this applies 0074 only. The fee becomes 5% for new quotes from that moment.
