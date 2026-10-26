@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.6 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.7 session.
 
 ## Start here
 
@@ -19,6 +19,12 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.7 complete and pushed - 26 October 2026
+
+Refunds under booked windows now apply the policy percentage to everything paid: rent and fee, and for hotel rooms the room, tax and the room's fee share. The amount is rounded down once and split by stable largest remainder, and the preview binds the customer, rooms and policy versions. Backend `0e1972c6d9f10ea72191f9d7285f004d908b2962`, pushed, no migration. Backend 340 of 340. [spec](_bmad-output/implementation-artifacts/spec-2-7-refund-preview-basis.md)
+
+**Exact next action:** Story 2.8 (confirm cancellation and reserve the eligible refund).
 
 ### Story 2.6 complete locally; migration 0075 blocks the push - 26 October 2026
 
