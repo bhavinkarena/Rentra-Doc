@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.2 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-1.3 session.
 
 ## Start here
 
@@ -19,6 +19,43 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 1.3 complete locally; migration 0071 and release gate open - 26 October 2026
+
+Story 1.3 (property video evidence) was built through `bmad-build`. On 26 October the user decided the open contract choices:
+- MP4 and MOV only.
+- 50 MB maximum.
+- Server-signed direct upload to authenticated Cloudinary storage, with server-side metadata verification.
+- Videos kept indefinitely; retention remains an open privacy gate.
+
+What the story delivers:
+- A reviewer request with explicit confirmation, bound to the current submission.
+- An owner portal update and queued email.
+- A private upload, then a separate explicit Send.
+- Immutable submitted evidence.
+- Audited reviewer playback through the API.
+- No review, publication or booking side effects.
+
+Details: [spec, triage and verification](_bmad-output/implementation-artifacts/spec-1-3-property-video-evidence.md).
+
+Commits: backend `42d9c566514a0b6ba91a2acd10a169e54299b59d`, frontend `00dc3dc8e43dc5ab1b65b44056d9bc4ebdae1bd9`. Both are **local and unpushed** on purpose.
+
+Checks:
+- Backend: 327 passed, 0 failed, 0 skipped.
+- Frontend: 115 passed.
+- Browser gates: 4, 14, 5 and 6 passed on a disposable fixture.
+- Independent review: one high and four medium findings fixed; the rest dismissed with reasons.
+
+**Release order (blocking):**
+1. Get approval to apply migration `0071_property_evidence_request.sql` to Neon. Neon was last recorded much earlier than 0070; check its applied state first.
+2. Push and deploy the backend.
+3. Push and deploy the frontend.
+4. Show that a real Cloudinary account handles an authenticated video upload, a `resource` metadata read and signed playback.
+5. Only then set `EVIDENCE_VIDEO_UPLOADS=true`.
+
+Pushing the backend before step 1 breaks the admin property review detail, because `readPropertyReview` reads the new table.
+
+**Exact next action:** ask the user to approve the Neon migration and push for Story 1.3, or continue to Story 1.4 (arrange and record selective physical verification) from [epics.md](_bmad-output/planning-artifacts/epics.md) through `bmad-build`, keeping the Story 1.3 commits unpushed.
 
 ### Story 1.1 complete; Story 1.2 complete locally - 26 October 2026
 
