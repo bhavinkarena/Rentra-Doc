@@ -42,7 +42,9 @@ Checks: backend 330 of 330 with no skips; frontend 115 of 115; browser gates `re
 2. Verify the table, then push the backend.
 3. Reviewer emails also need `OWNER_NOTIFICATION_DELIVERY=enabled` and the Resend settings on Render; until then alerts show "Email not configured".
 
-**Exact next action:** after 0072 is applied and the backend is pushed, Epic 1 Stories 1.1-1.8 are delivered. Continue with Epic 2 Story 2.1 through `bmad-build`.
+**Released 26 October:** the user applied 0072 (a read-only check showed 73 migrations and the `admin_alert` table) and the backend was pushed. Epic 1 Stories 1.1-1.8 are delivered. Hosted acceptance and reviewer email configuration are still unchecked.
+
+**Exact next action:** Continue with Epic 2 Story 2.1 through `bmad-build`.
 
 ### Story 1.4 complete and pushed - 26 October 2026
 
