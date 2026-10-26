@@ -24,7 +24,7 @@ When this migration is committed, record the matching code/docs commit or PR lin
 
 Owner percentage cancellation windows, decided by the user: hours, up to 6 windows; presets only fill the windows; one at-or-after-check-in percentage; optional early departure. Hotels get a default that each rate can override, and existing tiers and plans are migrated. [spec](_bmad-output/implementation-artifacts/spec-2-6-cancellation-windows.md)
 
-Commits: backend `9c8f2c9860a9002215680580decaefb6b0d28683`, frontend `01b718f38d36b3f8588d1e7f1fa713b1450ac04a`, both **unpushed**. Checks: backend 338 of 338, frontend 115 of 115.
+Commits: backend `9c8f2c9860a9002215680580decaefb6b0d28683`, frontend `01b718f38d36b3f8588d1e7f1fa713b1450ac04a`. **Released 26 October:** the user applied 0075. A read-only check showed 76 migrations, both columns present, and every rentable with an object policy. Both repositories were pushed. Checks: backend 338 of 338, frontend 115 of 115.
 
 **Release order:**
 1. The user runs `npm run db:migrate` (Neon is at 0074; this applies 0075 only).
