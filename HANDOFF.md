@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.10 session.
+Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.11 session.
 
 ## Start here
 
@@ -19,6 +19,32 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.11 complete locally; migration 0076 and performance gate open - 26 October 2026
+
+Continued with bmad-build under standing authorization. Starting revisions matched Story 2.10: backend `9a7501d991604c45e775e69c5c4b5054c3183872`, frontend `3621f649a5da66d19d5077502a3bdf74c7916a23`, docs `95a252875f3d85953cbd0401817c5284af408b21`. All working trees were clean before this story.
+
+**Delivered:** an explicit early-departure operation on the existing guest preview/confirm flow. Each selected room uses its booked early-departure policy and original nightly rent/extras, tax and fee allocation. Only starts strictly later than the confirmed request are unused; equality/current nights are consumed. No offer/0% can end occupancy with explicit consent but creates no refund. The original dates, prices, policy, used-stay history and retained rooms remain unchanged.
+
+Migration `0076_early_departure.sql` adds nullable departure/effective inventory-end metadata without a historical backfill. Its trigger keeps consumed stock sold, releases only unused future nights, and prevents repeated release or marker changes. The command reuses refund capacity, ambiguity refusal, atomic obligations and idempotency; ordinary cancellation payloads/replays remain compatible. It records a separate owner update, never fictitious inspection evidence. Caretaker views show authorized active room/guest facts and preserve Past visibility; analytics separates occupied nights from existing gross booked charges before tax/refunds. Historical Test payout snapshots remain unchanged after a later departure refund; recovery/accounting remains Story 2.17.
+
+**Local, unpushed commits:**
+- Backend: `2de5da728415345f8cb5a13a859b7ff683838d52`.
+- Frontend: `a7d43d2c36d64e6fc150f568037f30af6c53d80b`.
+- Matching docs are in this checkpoint commit. [Full spec, evidence and triage](_bmad-output/implementation-artifacts/spec-2-11-unused-night-early-departure.md).
+
+**Verification:** final full backend **367/367**, no failures/skips, with explicit local test URLs and `--test-concurrency=1`; frontend **127/127**, no failures/skips. The final departure integration passed **16/16** and real staff-page rendering **2/2**. Tests include populated 0075-to0076 preservation, strict nightly equality, blocked-lock clock freshness, schedule mismatch, mixed/zero offers, all-night stock, retained snapshots, staff permissions/Past, financial consumers, stale/replay/races, unknown/provider-failed refunds and an earlier Test payout. Configured targeted ESLint/Prettier, 10 service syntax checks, 77-file journal and whitespace checks passed. Three independent reviewers confirmed closure; existing recovery/accounting and performance work were explicitly deferred. Task-specific PostgreSQL, baseline worktree/junction and generated logs were cleaned up. Neon was not used.
+
+**Performance evidence, not a pass:** the default parallel backend run failed the discovery timing assertion (p95 2595 ms versus its 2000 ms shared budget; the subtest and parent account for 2 failures). Isolated `PERF_GATES=1` measured 330 ms against 300 ms. The unchanged Story 2.10 baseline also failed, at 521 ms. The serialized default-limit run passed with 393 ms p95. Discovery source/thresholds were not changed; these samples do not establish root cause or performance acceptance. Keep the strict 300 ms gate open on representative hardware.
+
+**Release order:**
+1. The user applies migration 0076 to Neon (last recorded at 0075). Do not run it against Neon yourself.
+2. Verify schema/journal read-only.
+3. Push backend, then frontend, only with explicit release authorization. Backend reads new columns on existing record/analytics paths, so pushing before migration breaks those paths.
+
+No production build, browser/responsive/device/screen-reader, actual provider or hosted acceptance was run. Provider refund limits/timing, GST/unused-night accounting, gateway costs, funding/recovery, outdated published 8% policy, discovery filter and dispute-cap gates remain open. Local completion is not Live approval.
+
+**Exact next action:** Story 2.12 through bmad-build. Investigate existing payout modes, finance/hotel-payouts.js, funding/destination guards, worker claims and admin controls before editing. Required target: global Auto and authorized owner override, verified capture+confirmation eligibility without check-in/Tuesday wait, current-mode checks for uninitiated work, no owner-controlled mode and no duplication/cancellation of initiated or uncertain transfers. Keep provider eligibility/funding gates explicit and migration 0076 unreleased until the user applies it. No repeated per-story approval.
 
 ### Story 2.10 complete locally; Story 2.11 next - 26 October 2026
 
@@ -41,7 +67,7 @@ Targeted configured ESLint/Prettier, service syntax checks, whitespace checks an
 
 **Not checked:** browser/responsive/device/screen-reader acceptance, production builds, hosted acceptance or real providers. No push, hosted migration, bank/provider operation or deployment. Existing provider refund limits/timing, GST/accounting, gateway costs, outdated 8% publication, discovery cancellation filter and dispute-cap gates remain open. This is local engineering completion, not Live readiness.
 
-**Exact next action:** Story2.11 through bmad-build. Read its ACs and run the read-only gap analysis on `domain/cancellation-policy.js`, `booking/hotel-stays.js`, `booking/cancellation.js`, booked night allocations and room inventory triggers. Only early-departure configuration/editor exists; no execution command was found. Preserve strictly later nightly starts as unused, original allocations, explicit confirmation and no automatic entitlement at zero refund. Continue with the smallest supported command/state contract and independent financial review. Do not repeat per-story approval.
+**Exact next action:** Story 2.11 through bmad-build. Read its ACs and run the read-only gap analysis on `domain/cancellation-policy.js`, `booking/hotel-stays.js`, `booking/cancellation.js`, booked night allocations and room inventory triggers. Only early-departure configuration/editor exists; no execution command was found. Preserve strictly later nightly starts as unused, original allocations, explicit confirmation and no automatic entitlement at zero refund. Continue with the smallest supported command/state contract and independent financial review. Do not repeat per-story approval.
 
 ### Story 2.9 complete; provider evidence gate open - 26 October 2026
 
