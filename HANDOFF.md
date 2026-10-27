@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 26 October 2026 (Asia/Kolkata), Stories 1.1-2.11 session.
+Updated: 27 October 2026 (Asia/Kolkata), Stories 1.1-2.12 session.
 
 ## Start here
 
@@ -19,6 +19,34 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.12 complete locally; migrations 0076/0077 and transfer execution gates open - 27 October 2026
+
+Continued with bmad-build under standing authorization. Starting revisions matched the previous checkpoint: backend `2de5da728415345f8cb5a13a859b7ff683838d52`, frontend `a7d43d2c36d64e6fc150f568037f30af6c53d80b`, docs `abb429bb92c000347dbbcc07497ab4eed7585b55`. No new product decision was needed.
+
+**Delivered:** append-only global Auto/Manual payout configuration, launch Auto, optional owner-wide override and explicit reset to current global inheritance. Finance admins review the current/proposed mode and reason, then confirm an actor/scope/version-bound hash with consent. Service authorization rejects owners/read-only writes; stale/raced/repeated confirmations cannot append duplicate changes. Owners see mode/source through existing financial readers and have no write path.
+
+Shared booking/capture checks remove check-in/completion/Tuesday waits from new accounting eligibility. Hotel and allocation readers retain immutable booked-owner attribution, current active-owner/current verified destination checks, completed/reserved refunds and pinned payout capacity. Unsupported hotel multiple-capture work is held consistently. Test statements revalidate mode and reviewed candidates under ordered listing/order/booking/owner/destination/payment-order locks. Existing payout snapshots/dates/amounts/destinations stay unchanged; pre-0077 funded obligations without modern owner snapshots retain status transitions while new unattributed obligations refuse.
+
+**Execution remains unavailable:** no Auto worker, provider adapter or pretend readiness flag was added. New Live hotel initiation and entered-UTR settlement now fail closed instead of allowing the old unverified bank-completion path. Authorized Test runs remain explicitly unfunded; the Test-only close action requires no UTR and changes no payout row. UI labels distinguish configuration, accounting eligibility, Test closure and recorded historical status. No bank settlement date is promised.
+
+**Local, unpushed commits:**
+- Backend: `26a964282146641d9ff75edfb8f92c89e72fd5bb`.
+- Frontend: `02c38a6ae4125e3312245beaf65d352eb6f3968c`.
+- Matching docs are in this checkpoint commit. [Spec, API contract, matrix audit and complete review triage](_bmad-output/implementation-artifacts/spec-2-12-payout-mode-and-eligibility.md).
+
+**Final verification:** backend **371/371**, frontend **133/133**, zero failures/skips. Backend used explicit disposable localhost PostgreSQL17 URLs, poisoned application DATABASE_URL and `--test-concurrency=1`. Checks cover populated0076-to0077 preservation, older multi-file transactional upgrades, default/override/reset, owner/read-only denial, valid-hash missing/false consent with unchanged audits, competing/repeated/stale confirmation, Auto/Manual before-arrival parity, blocked reserved-refund recheck, unsupported cancellations/multiple captures, owner transfer isolation, inactive owner, destination supersession, pinned legacy status updates, future-only ordered statement periods, Live refusal and UTR-free unfunded Test closure. Real component/transport tests cover settings and Test closure labels/recovery/pending behavior. Targeted configured ESLint/Prettier, four service syntax checks, journal78 and whitespace checks passed. All three independent review layers confirmed closure; no findings were deferred. Disposable PostgreSQL and generated task files were cleaned up; Neon was not used.
+
+**Intermediate failures are not acceptance:** the first full run366/369 exposed the new no_show enum comparison in older all-in-one migration transactions. Text comparisons fixed it and the actual upgrade checks passed. A second run overlapped review edits and was stopped after a temporary SQL helper parameter/column collision left a failed setup connection open. The corrected helper uses capture_environment. The final full run above started after all source edits and passed. Default discovery p95402ms passed its2000ms shared test budget; the separate strict300ms gate remains open from Story2.11, with no threshold/source change or new strict performance acceptance.
+
+**Release order:**
+1. The user applies migrations0076 and0077 to Neon (last recorded at0075). Do not apply them yourself.
+2. Verify schema/journal read-only.
+3. Push backend, then frontend, only with explicit release authorization. Existing financial/earnings readers now require0077 functions/settings; deploying before migration breaks those reads.
+
+No production build, browser/responsive/device/screen-reader/native consent interaction, actual provider/bank or hosted acceptance was run. Provider transfer eligibility, final payable tax/cost allocation, funding/exposure ceiling, recovery/accounting, refund limits/timing, outdated published8% policy, discovery cancellation filter and dispute-cap gates remain open. Local completion is not Live approval.
+
+**Exact next action:** Story2.13 through bmad-build. First inspect actual provider transfer/claim/reconciliation gaps and the existing refund durable-claim pattern, current mode resolver, shared eligibility/source/capacity/destination guards and Test statement boundary. Implement only supported coordinated reservation/dispatch outside locks and verified outcome reconciliation; obtain genuinely new provider/funding/accounting decisions in one batch when needed. Preserve visible uncertainty, stable identity, Test bank proceeds0, existing obligations, no automatic owner-bank debit or future payout offset. Keep migrations0076/0077 unreleased until the user applies them; no repeated per-story approval and no invented funding/provider readiness.
 
 ### Story 2.11 complete locally; migration 0076 and performance gate open - 26 October 2026
 
