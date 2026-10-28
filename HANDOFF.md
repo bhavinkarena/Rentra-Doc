@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.18 (Test repayment links) complete locally.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.19 (repayment notice receipt) complete locally; 2.20 in progress.
 
 ## Start here
 
@@ -19,6 +19,16 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.19 repayment notice receipt complete locally - 28 October 2026
+
+- Backend `076cf6fb889af2371f579472696e263f14d6df7c`, frontend `b9e7a5ce4a138bdd00f79f505d2e43fefe9539c6`, local only.
+- Migration 0082 `owner_repayment_notice` (+ append-only event table). Neon at 0075; 0076-0082 pending.
+- Receipt = earliest of portal view (explicit POST), owner Acknowledge, admin-confirmed receipt with reason. Stored `reminder_at` (+5d, portal only) and `due_at` (+7d). Earlier evidence moves milestones earlier with audit; link create/replace never counts.
+- Backend 419/419 (local PG), frontend 136/136, db:check 83. Review: 6 medium fixed, closure CLOSED. [Spec](_bmad-output/implementation-artifacts/spec-2-19-repayment-notice-receipt.md).
+- Not run: browser QA.
+
+**Exact next action:** finish Story 2.20 (overdue owner restriction, [spec](_bmad-output/implementation-artifacts/spec-2-20-overdue-owner-restriction.md)), then 2.21.
 
 ### Story 2.18 Test repayment links complete locally - 28 October 2026
 
