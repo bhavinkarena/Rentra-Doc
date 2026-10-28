@@ -2,9 +2,9 @@
 title: 'Story 2.20 - restrict overdue owners and clear only settled debt (Test slice)'
 type: 'feature'
 created: '2026-10-28'
-status: 'in-progress'
+status: 'done'
 route: 'dispatch'
-review_loop_iteration: 0
+review_loop_iteration: 1
 context: []
 baseline_commit: 'backend 076cf6fb889af2371f579472696e263f14d6df7c; frontend b9e7a5ce4a138bdd00f79f505d2e43fefe9539c6'
 ---
@@ -88,10 +88,10 @@ Frontend (`Rentra`):
 
 ## Tasks & Acceptance
 
-- [ ] migration 0083 + journal; `npm run db:check`
-- [ ] guards in 4 services + trigger backstop + error mapping
-- [ ] backend test, every matrix row
-- [ ] frontend banners and label
+- [x] migration 0083 + journal; `npm run db:check`
+- [x] guards in 4 services + trigger backstop + error mapping
+- [x] backend test, every matrix row
+- [x] frontend banners and label
 
 **Acceptance Criteria:**
 - Given an overdue owner, when a guest attempts a quote on any of their listings, then the response is 409 and its body does not mention repayment or debt.
@@ -101,3 +101,24 @@ Frontend (`Rentra`):
 
 - In `rentra-backend`, never against Neon: `PORTAL_TEST_DATABASE_URL=postgres://postgres@127.0.0.1:55432/postgres CP01_TEST_DATABASE_URL=postgres://postgres@127.0.0.1:55432/postgres DATABASE_URL=postgres://nobody@127.0.0.1:1/never node --import ./loader/register.mjs --env-file=.env --test --test-concurrency=1 "test/**/*.test.js"`. All pass (baseline 419). Never run db:migrate. Do not commit.
 - Frontend `npm test` (baseline 136), targeted eslint/prettier, `git diff --check`.
+
+## Implementation Notes
+
+- `owner_repayment_overdue(owner)` (STABLE SQL) and a BEFORE INSERT trigger on `booking_order` raising SQLSTATE `RN001`, mapped to 409.
+- Public responses use `LISTING_UNAVAILABLE` / "This property is not taking bookings right now." The service code `OWNER_REPAYMENT_OVERDUE` stays internal, so no debt wording reaches guests (resolves the frozen "refuse with OWNER_REPAYMENT_OVERDUE" against the no-leak acceptance criterion).
+- Guards: `requireBookableListing` (quote, both hold paths incl. hotel, time slots), approve, new provider order in `startCheckoutPayment`, `currentCalendarInputs` (advisory empty calendar), `getHotelAvailability` (rooms unavailable).
+- Lock order: listing mutex -> owner `user` row (admission FOR SHARE, repayment/notice writers FOR UPDATE) -> `owner_recovery` -> link/notice. The read-only snapshot quote skips the lock but still checks.
+- `ownerRepaymentStatus` gives one `{overdue, outstandingMinor}` for both owner banners.
+- Accepted: a payment dispatched before the owner became overdue still confirms on capture (the guest already paid).
+- Release: 0083 must be applied before this backend deploys (guards call the function). `early-departure` test stubs the function on the 0075 schema.
+
+## Review Triage Log
+
+- Review 1: 1 high (trigger error became 500), 6 medium (admission race, calendar and hotel rooms open, wrong advisory copy, earnings banner hidden without link, two outstanding figures), 1 question (in-flight capture, accepted). All fixed.
+- Closure: CLOSED; no lock cycle found.
+
+## Results
+
+- Backend 435/435 on local PostgreSQL (DATABASE_URL unreachable); frontend 136/136; `db:check` 84; `git diff --check` clean.
+- Migration 0083 added; 0076-0083 unapplied on Neon.
+- Not run: browser QA, concurrency stress test; hotel-rooms overdue path has no fixture test.
