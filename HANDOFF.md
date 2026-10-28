@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.14 complete locally.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.15 complete locally.
 
 ## Start here
 
@@ -19,6 +19,43 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.15 complete locally; push awaits release authorization - 28 October 2026
+
+Continued from the Story 2.14 commits. The starting revisions matched: backend `9f51fc1`, frontend `4ff34bd`, docs `05a017e`.
+
+**User decisions:**
+- Cancelling always pauses the property.
+- It covers every upcoming stay.
+- Guests are told by SMS and on the portal now; guest email stays a gate.
+- A reason is required, and guests see it.
+
+**Delivered:**
+- The owner previews, then pauses the property and cancels every stay whose check-in is still ahead. No admin approval is needed.
+- Each guest gets back everything paid (rent, fee, tax and extras), less refunds already recorded or reserved.
+- Unpaid requests and holds are released without a refund.
+- A hold whose payment is already with the provider goes to Rentra (`PAYMENT_IN_FLIGHT`), as do unverified, unsupported or already-paid-out stays.
+- Each order reports its own outcome. Outcomes are saved per order, so a retry, or any later request, finishes an interrupted command once.
+- Migration **0079** (`owner_cancel_upcoming`).
+
+[Spec, evidence and review triage](_bmad-output/implementation-artifacts/spec-2-15-cancel-upcoming-owner-stays.md).
+
+**Local, unpushed commits:** backend `8af21f2180d2ab18fcc9d2de33e835432a063b47`, frontend `1ec599a4b62b5bafa0047ee75ad9a21f133471de`, plus the matching docs commit.
+
+**Verification:**
+- Backend full suite with `--test-concurrency=1`: **387/387**. It ran on disposable PostgreSQL 14 at `127.0.0.1:55432`, with `DATABASE_URL` pointed at an unreachable address.
+- Frontend: **135/135**.
+- `db:check`: 80 files.
+- Syntax checks, targeted ESLint and Prettier, and `git diff --check` pass.
+- Independent review: two high and four medium findings were fixed. A closure check found two more mediums (lost-key resume, stale wording); both were fixed.
+- Not run: browser, device, accessibility and hosted checks.
+
+**Release order:**
+1. The user applies migrations **0076-0079** to Neon.
+2. Verify read-only.
+3. Push backend, then frontend, only with explicit release authorization.
+
+**Exact next action:** Story 2.16 (show distinct guest, owner and admin money records) through bmad-build. Keep the Story 2.13 transfer/funding gates and the guest email gate open.
 
 ### Story 2.14 complete locally; push awaits release authorization - 28 October 2026
 
