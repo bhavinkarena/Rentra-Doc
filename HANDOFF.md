@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.13 local fixture slice complete.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.14 complete locally.
 
 ## Start here
 
@@ -19,6 +19,29 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.14 complete locally; push awaits release authorization - 28 October 2026
+
+Continued from the Story 2.13 checkpoint. The starting revisions matched exactly: backend `12527f36ef8dcb3375b5c6c7aaf5aba62585c1d2`, frontend `17767b3d4d786ab0419cff82f4ecb3adfc255fab`, docs `f666206142110f3837fb88f629020ca510c87ab2`. The baseline reproduced 384/384 here (PostgreSQL 14.19). No product decision was needed: PRD FR-6 settles stop-new-only semantics.
+
+**Delivered:**
+- An owner pause preview separating confirmed stays, requests awaiting the owner and holds awaiting payment; stop-new-only is available and cancel-upcoming (Story 2.15) is shown as unavailable.
+- An explicit pause/resume action with a previewed-version guard; a repeated or concurrent identical request is a no-op.
+- While a property is not live: no approvals (decline stays open) and no new payment dispatch in any vertical. Hotels were the gap. In-flight payments stay readable, and a capture landing during the pause is refunded, not confirmed.
+- Holds keep their deadlines. No migration.
+
+[Spec, evidence and review triage](_bmad-output/implementation-artifacts/spec-2-14-pause-new-bookings.md).
+
+**Local, unpushed commits:** backend `9f51fc1e973868ea932d7a804e90c0d57107f326`, frontend `4ff34bde36e550415fcea77ba9b80a67686f9c04`, plus the matching docs commit.
+
+**Verification:** backend full suite with `--test-concurrency=1` **386/386**; frontend **135/135**; `db:check` 79 files; service syntax checks, targeted ESLint and Prettier, and `git diff --check` pass. The independent review's high-severity finding was a withdrawn false positive; the medium findings were fixed and closure was confirmed. No browser, device, accessibility or hosted acceptance was run.
+
+**Release order (unchanged, plus this story):**
+1. The user applies migrations 0076-0078 to Neon. Story 2.14 adds none.
+2. Verify read-only.
+3. Push backend, then frontend, only with explicit release authorization.
+
+**Exact next action:** Story 2.15 (cancel upcoming owner stays with full entitlement) through bmad-build. Reuse `pauseImpact().confirmedStays.cancellableUpcoming` and the cancel-upcoming slot reserved in the pause dialog. Keep all Story 2.13 transfer/funding gates open.
 
 ### Story 2.13 local fixture slice complete; real transfer delivery remains gated - 28 October 2026
 
