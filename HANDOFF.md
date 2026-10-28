@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 27 October 2026 (Asia/Kolkata), Stories 1.1-2.12 session.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.13 local fixture slice complete.
 
 ## Start here
 
@@ -19,6 +19,34 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.13 local fixture slice complete; real transfer delivery remains gated - 28 October 2026
+
+Continued bmad-build under standing authorization. Clean starting revisions matched Story2.12: backend `26a964282146641d9ff75edfb8f92c89e72fd5bb`, frontend `02c38a6ae4125e3312245beaf65d352eb6f3968c`, docs `bc2ad81bb03183c190186155c74fc188e0c300f9`. Independent read-only analysis found no transfer adapter/beneficiary verification/durable claim and confirmed the existing real cap prevents a full guest refund after owner money has already been paid. That cap was not weakened.
+
+**User decisions:** build the local payout lifecycle with provider fixtures and keep network transfers blocked; keep funded reserve, exposure limit, monitoring owner and stop-before-limit controls unset. INR40,000 remains a proposal. No actual provider/account or final net payable calculation was approved. This completes the approved fixture slice; actual Story2.13 transfer delivery and financial acceptance remain open.
+
+**Delivered:** migration0078 adds an isolated hypothetical Test transfer ledger with one operation per verified Test rent allocation, immutable source/owner/destination/policy terms, scoped request-key replay, durable one-shot dispatch and exact fixture outcome evidence. SQL and service guards reject mutations outside actual disposable localhost rentra_test_* databases. Current Auto eligibility or fresh explicit Manual consent governs uninitiated claims; the claim pins its actual actor/mode/version snapshot. Fixture calls happen only after commit and shared lock release. Lost, failed, missing, mismatched and one-second timed-out callbacks remain unknown; retries only look up. Late success remains reconcilable despite later mode/owner/destination changes and never creates another transfer.
+
+Fixture expected amount is remaining captured rent after refund reservations, explicitly not an approved net owner payable calculation. Real refunds/payouts/cash caps/totals/CSV are unchanged. No funded payout, real recovery debt or funding-authority record is created. Refunds after fixture dispatch remain intact and show simulated overlap exposure/funding authority unset. Existing owner/admin statement and allocation views display fixture state, source/destination version, expected amount and actual bank proceeds0. There is no public mutation endpoint, production worker, network-capable adapter or actual bank operation.
+
+**Local, unpushed commits:**
+- Backend: `12527f36ef8dcb3375b5c6c7aaf5aba62585c1d2`.
+- Frontend: `17767b3d4d786ab0419cff82f4ecb3adfc255fab`.
+- Matching docs are in this checkpoint commit. [Approved fixture spec, matrix evidence and complete review triage](_bmad-output/implementation-artifacts/spec-2-13-owner-payout-transfers.md).
+
+**Verification:** final full backend **384/384**, frontend **135/135**, zero failures/skips. Backend used explicit disposable localhost PostgreSQL17 URLs, poisoned application DATABASE_URL and --test-concurrency=1. Focused matrix13/13 covers populated0077 upgrade/history, permissions/local connection/SQL guards, reserved-only inserts, unique/replayed/raced requests, Manual current-version consent, one-shot concurrent claims, actual authenticated revocation in both lock orders, committed claim and NOWAIT/try-lock release during both callbacks, bounded hanging create/lookup, every evidence field, late success, source isolation, real cap rejection and unchanged payout/totals/CSV. Actual component rendering2/2 verifies every fixture state/zero-bank/exposure label and owner/admin attachment. Targeted configured ESLint/Prettier, two changed-service syntax checks, journal79 and whitespace passed. All three independent review layers confirmed closure; no findings were deferred. PostgreSQL and task files were cleaned up. Neon was not used.
+
+**Review correction worth preserving:** owner eligibility only needs FOR SHARE. FOR UPDATE would deadlock against a destination revocation holding its row while inserting an owner-notification FK. The actual reverse-overlap regression verifies revocation completes, the queued fixture is blocked and no provider create occurs. Trusted privileged local SQL maintenance is not a new dispatch authorization surface; supported mutations remain behind guarded services and network execution remains absent.
+
+**Release order:**
+1. The user applies migrations0076,0077 and0078 to Neon (last recorded at0075); do not apply them yourself.
+2. Verify schema/journal read-only.
+3. Push backend, then frontend, only with explicit release authorization. Statement/allocation/CSV reads with allocation records now need0078 even though hosted fixture writes are blocked.
+
+No production build, browser/responsive/device/screen-reader, actual provider/bank/hosted or strict performance acceptance was run. Default discovery p95316ms passed its2000ms shared suite budget; the strict300ms gate remains open. Actual provider/account eligibility, beneficiary verification, payable tax/component allocation, funded refund path/exposure controls, recovery/accounting and existing legal/operational gates remain required before financial sign-off or enablement.
+
+**Exact next action:** Story2.14 through bmad-build: Pause new bookings while retaining commitments. First inspect existing owner property pause/resume and scheduled-end handling, availability/admission guards and all verticals; preserve existing confirmed stays, payments, refunds and history. Keep the Story2.13 actual transfer/funding gates open, and migrations0076-0078 unreleased until user application. No repeated per-story approval or invented funding/provider readiness.
 
 ### Story 2.12 complete locally; migrations 0076/0077 and transfer execution gates open - 27 October 2026
 
