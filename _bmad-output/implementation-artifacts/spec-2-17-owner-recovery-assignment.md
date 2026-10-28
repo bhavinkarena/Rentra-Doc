@@ -2,9 +2,9 @@
 title: 'Story 2.17 - assign owner recovery after funded guest refunds (Test fixture slice)'
 type: 'feature'
 created: '2026-10-28'
-status: 'in-progress'
+status: 'done'
 route: 'dispatch'
-review_loop_iteration: 0
+review_loop_iteration: 2
 context: []
 ---
 
@@ -84,10 +84,10 @@ Test payout fixtures (0078) sit outside the cap, so a guest refund after a succe
 ## Tasks & Acceptance
 
 **Execution:**
-- [ ] migration 0080 + journal; `npm run db:check`
-- [ ] backend service + controller + routes
-- [ ] backend test `test/integration/owner-recovery.integration.test.js` -- every matrix row
-- [ ] frontend page, component, endpoints, actions; nav link next to the other finance pages
+- [x] migration 0080 + journal; `npm run db:check`
+- [x] backend service + controller + routes
+- [x] backend test `test/integration/owner-recovery.integration.test.js` -- every matrix row
+- [x] frontend page, component, endpoints, actions; nav link next to the other finance pages
 
 **Acceptance Criteria:**
 - Given an assigned recovery, when guest refund and fixture rows are compared before and after, then they are unchanged.
@@ -95,9 +95,40 @@ Test payout fixtures (0078) sit outside the cap, so a guest refund after a succe
 
 ## Implementation Notes
 
+- The refund anchor is the fixture's reserve time (`ra.created_at > f.created_at`), not its `verified_at`. 0078 fixes `expected_minor` at reserve, net of the refunds that existed then. A refund landing between reserve and dispatch makes the dispatch fail with `STALE_PREVIEW`; this is tested.
+- The assign runs inside `withListingInventory`, the same mutex refund completion takes. The replay is checked again under the lock, and 23505 is mapped to a replay or a conflict.
+- `owner_recovery_adjustment` is append-only: UPDATE, DELETE and TRUNCATE are all blocked.
+- Assigning again with unchanged figures returns `NOTHING_TO_ASSIGN`.
+- `authorize` is exported from `payout-modes.js` and reused.
+
 ## Spec Change Log
 
 ## Review Triage Log
+
+**First review:**
+- **high / fixed:** the assign was not serialized with refund completion.
+- **medium / fixed:**
+  - replay before the lock, and the 23505 race;
+  - TRUNCATE bypassing the append-only table;
+  - missing matrix tests;
+  - the frontend network error;
+  - missing Test labels.
+- **Question, answered:** the frontend's `result.result.version` is correct.
+
+**Closure check:**
+- **high / fixed:** a refund created between reserve and verification was dropped. The anchor moved to reserve time.
+
+**Final closure check:** CLOSED.
+
+## Results
+
+- Backend `3da392ff9ae18ff2f6d1cb49d738c25f8046c252` and frontend `617b038f68788fb84d1dc14daf8bea8a51fb3e26` are local commits. They have not been pushed.
+- Backend full suite: **401/401**, on local PostgreSQL with `DATABASE_URL` pointed at an unreachable address.
+- Frontend: **136/136**.
+- `db:check`: 81 files.
+- `git diff --check` is clean.
+- ESLint and Prettier pass on linted files. `src/services/finance/*` is excluded by the ESLint config.
+- Not run: a browser check of the new page.
 
 ## Verification
 

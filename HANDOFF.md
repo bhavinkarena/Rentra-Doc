@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.16 complete locally.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.17 (Test fixture slice) complete locally.
 
 ## Start here
 
@@ -19,6 +19,41 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.17 Test fixture slice complete locally; real recovery stays gated - 28 October 2026
+
+**User decision:** Test-only fixture slice, like Story 2.13. Real payouts cannot create an owner debt today: the funds cap refuses that guest refund (Story 2.15 `FUNDS_ALREADY_PAID_OUT`), and Rentra refund funding is unset.
+
+**Delivered:**
+- A finance admin (`admin.payments.*`) previews and assigns the owner's obligation for each verified Test payout fixture.
+- The obligation is min(fixture paid, rent refunds created after the fixture reserve), minus recovered. Rentra's fee is excluded, and in-flight refunds are shown as reserved.
+- Each assignment is versioned and audited, with an append-only adjustment history. A replay or a stale preview is handled explicitly.
+- No refund, payout or real money is touched, and future payouts are not offset.
+- Migration **0080**.
+- New admin page: `/admin/finance/owner-recoveries`.
+
+[Spec and review](_bmad-output/implementation-artifacts/spec-2-17-owner-recovery-assignment.md).
+
+**Local, unpushed commits:** backend `3da392ff9ae18ff2f6d1cb49d738c25f8046c252`, frontend `617b038f68788fb84d1dc14daf8bea8a51fb3e26`, plus the docs commit.
+
+**Verification:**
+- Backend: **401/401**.
+- Frontend: **136/136**.
+- `db:check`: 81 files.
+- Review: two high and five medium findings were fixed; the final closure check is CLOSED.
+- No browser check.
+
+**Release:**
+1. The user applies migrations **0076-0080** to Neon.
+2. Verify read-only.
+3. Push backend, then frontend, only with authorization.
+
+**Open gates:**
+- A real Rentra-funded refund path and funding.
+- Owner terms and accounting.
+- Real payout evidence.
+
+**Exact next action:** Story 2.18 (generate and verify owner repayment links) through bmad-build. It depends on 2.17 and stays within the Test fixture scope unless the user decides otherwise.
 
 ### Story 2.16 complete locally; push awaits release authorization - 28 October 2026
 
