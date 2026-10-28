@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.17 (Test fixture slice) complete locally.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.18 (Test repayment links) complete locally.
 
 ## Start here
 
@@ -19,6 +19,20 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.18 Test repayment links complete locally - 28 October 2026
+
+User decisions: Razorpay Test order as the repayment "link"; finance admin creates it on the owner recoveries page; owner pays on the earnings page; no SMS/email.
+
+- Backend `a2b633318572b42e133299fd4a7bbaa49fae38aa`, frontend `fa61c5df8888a947eee7d87f2e59d4d45e7b4185`, local only, not pushed.
+- Migration 0081 `owner_repayment`; Neon still at 0075, 0076-0081 pending (user applies).
+- Backend 411/411 (local PG, DATABASE_URL unreachable), frontend 136/136, db:check 82, diff --check clean.
+- Review: 4 rounds; all high/medium fixed except one accepted medium (excess_minor also holds a wrong-amount capture closed by admin, for return). Details in [spec](_bmad-output/implementation-artifacts/spec-2-18-owner-repayment-links.md).
+- Not run: browser Razorpay Test checkout; signed hosted Test evidence. Open: excess return action, link expiry, Test key per link.
+
+Decisions already taken for the next stories: 2.19 receipt evidence = earliest of portal view, owner Acknowledge, or admin-confirmed receipt with reason; day-5 reminder in portal only. 2.20 overdue restriction = no new bookings on all the owner's listings, checked in the database at admission; confirmed stays remain; full verified repayment lifts only that restriction.
+
+**Exact next action:** Story 2.19 (record evidenced repayment notice receipt), then 2.20 and 2.21 (user asked to continue through 2.21).
 
 ### Story 2.17 Test fixture slice complete locally; real recovery stays gated - 28 October 2026
 
