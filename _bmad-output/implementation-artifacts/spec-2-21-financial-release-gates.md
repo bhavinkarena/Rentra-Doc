@@ -2,9 +2,9 @@
 title: 'Story 2.21 - demonstrate financial release gates without unsafe enablement'
 type: 'feature'
 created: '2026-10-28'
-status: 'in-progress'
+status: 'done'
 route: 'dispatch'
-review_loop_iteration: 0
+review_loop_iteration: 1
 context: []
 baseline_commit: 'backend 93cd69cb379f20df1c5c613bd3ed28df49d9dcc1; frontend 82a6b0b1aeb4241dcb19e409003356abdc2635d2'
 ---
@@ -115,10 +115,10 @@ Frontend (`Rentra`):
 
 ## Tasks & Acceptance
 
-- [ ] kill switch + guards + error mapping
-- [ ] release gates service, route, test (every matrix row)
-- [ ] frontend page + nav
-- [ ] acceptance evidence document
+- [x] kill switch + guards + error mapping
+- [x] release gates service, route, test (every matrix row)
+- [x] frontend page + nav
+- [x] acceptance evidence document
 
 **Acceptance Criteria:**
 - Given no external evidence, when gates are read, then the overall status is not ready and no gate is passed.
@@ -128,3 +128,16 @@ Frontend (`Rentra`):
 
 - In `rentra-backend`, never against Neon: `PORTAL_TEST_DATABASE_URL=postgres://postgres@127.0.0.1:55432/postgres CP01_TEST_DATABASE_URL=postgres://postgres@127.0.0.1:55432/postgres DATABASE_URL=postgres://nobody@127.0.0.1:1/never node --import ./loader/register.mjs --env-file=.env --test --test-concurrency=1 "test/**/*.test.js"`. All pass (baseline 435). Never run db:migrate. Do not commit.
 - Frontend `npm test` (baseline 136), targeted eslint/prettier, `git diff --check`.
+
+## Review Triage Log
+
+- Review 1: 0 high, 6 medium (fixture guards ignored injected env, journal fallback text, cancel-upcoming switch test missing, evidence doc totals/dispute-cap claim/name checks), 1 non-issue (page retry already via PortalState). Fixed.
+- Coverage verified by grep: every `createOrder`/`createRefund`/fixture reserve/dispatch path is guarded; obligation creators dispatch nothing.
+- Closure: CLOSED.
+
+## Results
+
+- Backend 444/444 on local PostgreSQL (DATABASE_URL unreachable); frontend 136/136; `db:check` 84 (no migration); `git diff --check` clean.
+- [Acceptance evidence](epic-2-acceptance-evidence.md): takeover and dispute-cap money coverage missing; hosted Test evidence open.
+- All seven gates are hard-coded `blocked`; passing one needs a code change and real evidence. Not ready for Live money.
+- Not run: browser QA of the gates page.

@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.20 (overdue owner restriction) complete locally; 2.21 in progress.
+Updated: 28 October 2026 (Asia/Kolkata), Stories 2.18-2.21 complete locally; Epic 2 engineering done, release gates open.
 
 ## Start here
 
@@ -20,14 +20,24 @@ When this migration is committed, record the matching code/docs commit or PR lin
 
 ## Most recent BMad work
 
+### Story 2.21 financial release gates complete locally - 28 October 2026
+
+- Backend `e1f3e20d8b76f1e151d52c47da28b439041db18d`, frontend `915eadbe4aa5db3189dd729f7787f435682a5a1c`, local only. No migration.
+- Admin GET `/admin/payments/release-gates` (read only, `admin.payments.read`, no-store) and page `/admin/finance/release-gates`: seven gates hard-coded `blocked` with owner/blocker/evidence; live facts; overall "Not ready for Live money"; INR 40,000 shown as proposal only.
+- `FINANCE_INITIATION_DISABLED=true` refuses new provider orders, refunds dispatch (stays requested), payout fixture reserve/dispatch and repayment link create (503). Reads, verify, check/resolve, webhooks and reconciliation keep working.
+- [Acceptance evidence](_bmad-output/implementation-artifacts/epic-2-acceptance-evidence.md): takeover and dispute-cap money tests missing; hosted Test evidence open.
+- Backend 444/444 (local PG), frontend 136/136, db:check 84. Review: 6 medium fixed, closure CLOSED. [Spec](_bmad-output/implementation-artifacts/spec-2-21-financial-release-gates.md).
+
+**Release (user-authorized only):** user applies 0076-0083 to Neon (0083 before backend deploy) -> read-only verification -> backend push -> frontend push. Nothing pushed.
+
+**Exact next action:** await user: release of Epic 2 work, or Story 3.1 (browse categories while retaining guest search context) through bmad-build.
+
 ### Story 2.20 overdue owner restriction complete locally - 28 October 2026
 
 - Backend `93cd69cb379f20df1c5c613bd3ed28df49d9dcc1`, frontend `82a6b0b1aeb4241dcb19e409003356abdc2635d2`, local only.
 - Migration 0083: `owner_repayment_overdue(owner)` + `booking_order` BEFORE INSERT trigger (SQLSTATE RN001 -> 409). Neon at 0075; 0076-0083 pending. **0083 must be applied before this backend deploys.**
 - Overdue = due_at passed and outstanding > 0. New quotes, holds (incl. hotel), approvals, new payment starts, calendars and hotel rooms refused on every listing of that owner; guests see only "not taking bookings right now". Only verified full repayment lifts it.
 - Backend 435/435 (local PG), frontend 136/136, db:check 84. Review: 1 high + 6 medium fixed, closure CLOSED. [Spec](_bmad-output/implementation-artifacts/spec-2-20-overdue-owner-restriction.md).
-
-**Exact next action:** finish Story 2.21 ([spec](_bmad-output/implementation-artifacts/spec-2-21-financial-release-gates.md)).
 
 ### Story 2.19 repayment notice receipt complete locally - 28 October 2026
 
