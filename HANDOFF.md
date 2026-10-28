@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Story 2.15 complete locally.
+Updated: 28 October 2026 (Asia/Kolkata), Story 2.16 complete locally.
 
 ## Start here
 
@@ -19,6 +19,43 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 2.16 complete locally; push awaits release authorization - 28 October 2026
+
+**User decisions:**
+- The owner sees only a summary of guest money: paid in full or not, and refund progress with amounts. No provider IDs.
+- The payout state is shown on the owner booking detail and on each earnings row.
+
+**Delivered:**
+- Money records shaped per audience:
+  - The owner gets `guestPayment` plus `visits[].payout`, with no provider IDs.
+  - The guest never sees payout data.
+  - The admin view is unchanged apart from labels.
+- Amounts:
+  - A missing amount is null and shows "Not recorded", never ₹0.
+  - Non-live money is labelled, and actual bank amounts show "Not applicable (not live)".
+  - Payout amounts appear only once funded.
+- Record and admin payment endpoints send `Cache-Control: private, no-store`.
+- No migration.
+
+[Spec, evidence and review](_bmad-output/implementation-artifacts/spec-2-16-distinct-money-records.md).
+
+**Local, unpushed commits:** backend `04a7a1cd29fa55f8f31c298ea64bea1da1d54178`, frontend `2504e91e01ab574a4607d956a752c96b06d45fb0`, plus the docs commit.
+
+**Verification:**
+- Backend: **389/389**.
+- Frontend: **136/136**.
+- `db:check`: 80 files.
+- `git diff --check` is clean.
+- Review: two high and five medium findings were fixed; the closure check is CLOSED.
+- Not run: browser and accessibility checks.
+
+**Release order:**
+1. The user applies migrations 0076-0079 to Neon.
+2. Verify read-only.
+3. Push backend, then frontend, only with authorization.
+
+**Exact next action:** Story 2.17 (assign owner recovery after funded guest refunds) through bmad-build. Keep all Story 2.13 funding and transfer gates open.
 
 ### Story 2.15 complete locally; push awaits release authorization - 28 October 2026
 
