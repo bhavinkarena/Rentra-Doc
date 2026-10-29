@@ -46,7 +46,12 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - Child bands may charge % of that night's room-only price / room adults (half-up paise, before tax). Infant bands free or fixed only. Age 0 preserved through quote, hold and booking record. No migration.
 - Backend 465/465 local PG, frontend 151/151, next build passes. Review: 2 medium fixed (guest wording now "25% of the room price ÷ adults, per child/night"; blank % message). Browser QA not run.
 
-**Exact next action:** Story 3.8, or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0086.
+### Story 3.8 pet policy done, committed locally (backend 57d541d, frontend 7aaf4dd) - 29 October 2026
+
+- Per-listing pet policy (farm/villa + hotel): allowed/not allowed, max pets, types, size, fee unit. Legacy yes = allowed, free, max 1 with owner review prompt. Guests see limits + assistance-animal line, no fee until 3.9. Quotes stamp policy version (no fee) when allowed. Pet changes audit only (no re-review).
+- Migration 0087. Backend 471/471 local PG, frontend 152/152, next build passes. Review: 4 medium (2 fixed, 2 accepted: farm other-owner redirect, FE/BE module formatting). Browser QA not run; farm save path has unit tests only.
+
+**Exact next action:** Story 3.9 (guest pet declaration and charge), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0087.
 
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
