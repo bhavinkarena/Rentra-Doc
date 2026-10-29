@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Stories 3.1-3.2 complete locally; Epic 2 release still pending.
+Updated: 28 October 2026 (Asia/Kolkata), Stories 3.1-3.3 complete locally; Epic 2 release still pending.
 
 ## Start here
 
@@ -20,14 +20,23 @@ When this migration is committed, record the matching code/docs commit or PR lin
 
 ## Most recent BMad work
 
+### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
+
+- Backend `281c3c79f9dd376679070dcc010c76bec3eadc75`, frontend `3e10301506251d1378cd0a13951b46f77bff7e63`, local only.
+- Migration 0084 (`room_type.extra_places`, `rate_plan.inclusions`, `booking_room.room_snapshot`). Neon at 0075; 0076-0084 pending; 0084 before this backend deploys.
+- User decisions: adults need a real sleeping place (beds + declared extra beds/mattresses >= max adults); existing non-compliant rooms stay bookable, flagged, fixed on next save; extra places on a live hotel do not trigger re-review.
+- Meal inclusions per plan with code defaults and add-only overrides (MP needs lunch or dinner). Room facility picker. Room promises snapshotted at booking.
+- Backend 449/449 (local PG), frontend 147/147, `next build` passes. Review: 3 medium fixed, closure CLOSED. [Spec](_bmad-output/implementation-artifacts/spec-3-3-rooms-offers-inclusions.md).
+- Not run: browser QA. Note: pre-0084 MP plans need a lunch/dinner pick on the next rates save.
+
+**Exact next action:** Story 3.4 (quote fixed or percentage bedding per night) through bmad-build, or Epic 2 release when the user authorizes.
+
 ### Story 3.2 photo-first room comparison complete locally - 29 October 2026
 
 - Frontend `31b4d8813c116b5e5c6aaeb39ca7bdc138f0cb32`, local only; backend unchanged, no migration.
 - Hotel room cards: photo first at every width, labelled keyboard gallery ("Photo N of M", announced), "No photo provided for this room", all facilities in a disclosure (4 + visible "+N more"), facts left / plans right on desktop, stacked below. Steppers, guards and totals unchanged; no Save button added.
 - Frontend 146/146, `next build` passes. Review: 5 medium fixed. [Spec](_bmad-output/implementation-artifacts/spec-3-2-photo-first-room-comparison.md).
 - Open: browser/zoom/screen-reader usability check (story readiness gate).
-
-**Exact next action:** Story 3.3 (configure accurate rooms, offers and inclusions) through bmad-build, or Epic 2 release when the user authorizes.
 
 ### Story 3.1 category browse keeps search context, complete locally - 29 October 2026
 
