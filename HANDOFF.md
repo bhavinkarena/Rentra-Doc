@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Stories 2.18-2.21 complete locally; Epic 2 engineering done, release gates open.
+Updated: 28 October 2026 (Asia/Kolkata), Story 3.1 complete locally (Epic 3 started); Epic 2 release still pending.
 
 ## Start here
 
@@ -19,6 +19,15 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 3.1 category browse keeps search context, complete locally - 29 October 2026
+
+- Backend `8af1ef397918ca78b0cf7352e652304e8b5f3f92`, frontend `59570d4ce13f7f9ad845d049c47a19510193e444`, local only. No migration.
+- Category switch carries location, dates, party and filters (cross-vertical mapping with a dropped-field notice); "All" removes only category; login returns to the exact `/search` URL (shared safe-next rule in both repos); results distinguish no inventory, no match, fully booked and failed refresh; search fetch is no-store.
+- Backend 446/446 (local PG), frontend 144/144, `next build` passes. Review: 5 medium fixed, closure CLOSED. [Spec](_bmad-output/implementation-artifacts/spec-3-1-category-browse-search-context.md). Epic context: [epic-3-context.md](_bmad-output/implementation-artifacts/epic-3-context.md).
+- Not run: browser/device QA. Deploy backend before frontend.
+
+**Exact next action:** Story 3.2 (compare photo-first rooms and complete facilities) through bmad-build, or Epic 2 release when the user authorizes.
 
 ### Story 2.21 financial release gates complete locally - 28 October 2026
 
