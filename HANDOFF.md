@@ -41,7 +41,12 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - Migration 0086. Backend 462/462 local PG, frontend 150/150, next build passes. Review CLOSED (1 high fixed: first policy edit seeded a free child price). Browser QA not run.
 - Release: every hotel quote hash changes once (open quotes re-review). 0086 before this backend.
 
-**Exact next action:** Story 3.7 (price actual child ages with room-local adults), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0086.
+### Story 3.7 percent child pricing done, committed locally - 29 October 2026
+
+- Child bands may charge % of that night's room-only price / room adults (half-up paise, before tax). Infant bands free or fixed only. Age 0 preserved through quote, hold and booking record. No migration.
+- Backend 465/465 local PG, frontend 151/151, next build passes. Review: 2 medium fixed (guest wording now "25% of the room price ÷ adults, per child/night"; blank % message). Browser QA not run.
+
+**Exact next action:** Story 3.8, or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0086.
 
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
