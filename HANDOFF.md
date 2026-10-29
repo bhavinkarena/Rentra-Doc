@@ -29,7 +29,13 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - BEDDING_UNAVAILABLE refuses rooms that cannot sleep every adult. Rooms with no declared beds (seeded rows) are exempt.
 - Checks: backend 452/452 on local PG, frontend 148/148, `next build` passes. Browser QA not run. [Spec](_bmad-output/implementation-artifacts/spec-3-4-bedding-per-night.md).
 
-**Exact next action:** Story 3.5 (effective date rates, safe calendar edits), or the Epic 2 release when authorized. Review CLOSED; nothing pushed.
+### Story 3.5 effective rates and safe calendar edits done, committed locally (backend ad5f86c, frontend 8049e2d) - 29 October 2026
+
+- Farm/villa % edits start from the date's current price (override if set). Hotel calendar preview shows before/after prices plus a data version; a stale save gets 409 CALENDAR_CHANGED. Linked offer rates shown on desktop grid (not phone cards). Drawer: Escape, discard confirm, Tab trap, leave-page guard.
+- No migration. Backend 453/453 local PG, frontend 149/149, next build passes. Review CLOSED. Browser QA of drawer keyboard/focus not run.
+- Release: hotel calendar saves without expectedVersion now get 422, so deploy the frontend right after this backend.
+
+**Exact next action:** Story 3.6 (child age and accommodation policies), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0085.
 
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
