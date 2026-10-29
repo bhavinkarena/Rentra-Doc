@@ -46,6 +46,14 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - Child bands may charge % of that night's room-only price / room adults (half-up paise, before tax). Infant bands free or fixed only. Age 0 preserved through quote, hold and booking record. No migration.
 - Backend 465/465 local PG, frontend 151/151, next build passes. Review: 2 medium fixed (guest wording now "25% of the room price ÷ adults, per child/night"; blank % message). Browser QA not run.
 
+### Story 3.9 pet declaration and charge implemented, uncommitted - 29 October 2026
+
+- Guests declare 0-5 pets (search, farm booking box, hotel stay form; carried through category switch, login and reload). Search hides not-allowed / maxPets-too-low listings (farm + hotel). Quotes refuse PETS_NOT_ALLOWED / PETS_OVER_LIMIT (422 via actions; 409 on the public hotel stay-quote route); hold refuses PETS_UNCONFIRMED. Farm: pet charge inside visit rent before the one fee (per_stay/per_pet on first visit, per-night units per booked date). Hotel: on the first room line's roomMinor (fee + refunds cover it, tax unchanged). Declaration stored in farm policy_snapshot.pets / hotel guest_details.pets. Guest pet line now shows the fee. No migration.
+- Backend 475/475 local PG, frontend 154/154, next build passes, eslint/prettier/diff-check clean. Not committed, browser QA not run.
+- Review 1 (8 items) fixed: pets=0 keeps the pre-3.9 digest. The hotel pet fee is now trip-level: partial cancel refunds 0, whole cancel refunds at the rent ratio. Hotel cards include the fee; PETS_* are 422 everywhere; PETS_INVALID added. Decisions: pet money booked as rent, with the split kept in the snapshots (accepted). Farm once-only pet charges are now spread over visits by largest remainder.
+
+**Exact next action:** Story 3.9 committed locally (backend 2778bda, frontend d76f690); review CLOSED after reconciliation fix. Next: Story 3.10, or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0087.
+
 ### Story 3.8 pet policy done, committed locally (backend 57d541d, frontend 7aaf4dd) - 29 October 2026
 
 - Per-listing pet policy (farm/villa + hotel): allowed/not allowed, max pets, types, size, fee unit. Legacy yes = allowed, free, max 1 with owner review prompt. Guests see limits + assistance-animal line, no fee until 3.9. Quotes stamp policy version (no fee) when allowed. Pet changes audit only (no re-review).
