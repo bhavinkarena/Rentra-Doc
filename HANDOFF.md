@@ -20,6 +20,17 @@ When this migration is committed, record the matching code/docs commit or PR lin
 
 ## Most recent BMad work
 
+### Story 3.4 bedding per night implemented, uncommitted - 29 October 2026
+
+- The work is uncommitted in both repos, on top of backend `281c3c7` and frontend `3e10301`. Review has not run yet.
+- Migration 0085 adds `room_type.extra_adult_includes_bedding`. 0076-0085 are pending on Neon, and 0085 must be applied before this backend deploys.
+- Bedding is charged only for adults the beds cannot hold, cheapest type per night. Each type is priced fixed ₹ or as a % of the room-only rate.
+- Bedding sits inside the night rate, so it is taxed, carries the fee and is refunded with the room.
+- BEDDING_UNAVAILABLE refuses rooms that cannot sleep every adult. Rooms with no declared beds (seeded rows) are exempt.
+- Checks: backend 452/452 on local PG, frontend 148/148, `next build` passes. Browser QA not run. [Spec](_bmad-output/implementation-artifacts/spec-3-4-bedding-per-night.md).
+
+**Exact next action:** run the 3.4 review (bmad-code-review), commit both repos, then go to Story 3.5.
+
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
 - Backend `281c3c79f9dd376679070dcc010c76bec3eadc75`, frontend `3e10301506251d1378cd0a13951b46f77bff7e63`, local only.
