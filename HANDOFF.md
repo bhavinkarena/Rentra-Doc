@@ -35,7 +35,13 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - No migration. Backend 453/453 local PG, frontend 149/149, next build passes. Review CLOSED. Browser QA of drawer keyboard/focus not run.
 - Release: hotel calendar saves without expectedVersion now get 422, so deploy the frontend right after this backend.
 
-**Exact next action:** Story 3.6 (child age and accommodation policies), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0085.
+### Story 3.6 child age policies done, committed locally (backend 2d318cb, frontend 0717024) - 29 October 2026
+
+- Property child policy (infant/child bands, adult-rate age), per-room override, cots per room. Free and fixed bands price quotes now; percent waits for 3.7. Hotels without a saved policy keep the old free-under-N plus room extra-child rule. Supervision: 18+ per room. Infant-only overflow needs a cot (COT_UNAVAILABLE).
+- Migration 0086. Backend 462/462 local PG, frontend 150/150, next build passes. Review CLOSED (1 high fixed: first policy edit seeded a free child price). Browser QA not run.
+- Release: every hotel quote hash changes once (open quotes re-review). 0086 before this backend.
+
+**Exact next action:** Story 3.7 (price actual child ages with room-local adults), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0086.
 
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
