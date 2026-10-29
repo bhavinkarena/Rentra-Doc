@@ -20,7 +20,7 @@ When this migration is committed, record the matching code/docs commit or PR lin
 
 ## Most recent BMad work
 
-### Story 3.4 bedding per night implemented, uncommitted - 29 October 2026
+### Story 3.4 bedding per night done, committed locally (backend 4fc5a8b, frontend 391ff18) - 29 October 2026
 
 - The work is uncommitted in both repos, on top of backend `281c3c7` and frontend `3e10301`. Review has not run yet.
 - Migration 0085 adds `room_type.extra_adult_includes_bedding`. 0076-0085 are pending on Neon, and 0085 must be applied before this backend deploys.
@@ -29,7 +29,7 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - BEDDING_UNAVAILABLE refuses rooms that cannot sleep every adult. Rooms with no declared beds (seeded rows) are exempt.
 - Checks: backend 452/452 on local PG, frontend 148/148, `next build` passes. Browser QA not run. [Spec](_bmad-output/implementation-artifacts/spec-3-4-bedding-per-night.md).
 
-**Exact next action:** run the 3.4 review (bmad-code-review), commit both repos, then go to Story 3.5.
+**Exact next action:** Story 3.5 (effective date rates, safe calendar edits), or the Epic 2 release when authorized. Review CLOSED; nothing pushed.
 
 ### Story 3.3 rooms, offers and inclusions complete locally - 29 October 2026
 
