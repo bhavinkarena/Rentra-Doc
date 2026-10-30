@@ -57,7 +57,13 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - Whole apartment category (stay vertical, rental unit `unit_night`) with apartment profile: unit, beds, occupants, min/max nights 1-90, arrival minimums, check-in/out, turnover 0-3 nights, flat weekday/weekend price, cleaning fee (0 allowed). Owners save + submit; admin reviews; hidden from all guest surfaces until 3.11. Night cancellation presets; hotel photo limits.
 - Migration 0088 (enum value + apartment_profile). Category row seeded by `db:migrate` (migrate.js) after migrations commit, so apply Neon migrations with the normal migrate command, not raw SQL. Backend 484/484 local PG, frontend 156/156, next build passes. Review CLOSED. Browser QA not run.
 
-**Exact next action:** Story 3.11 (book apartments with exclusive stock and buffers), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0088.
+### Story 3.11 apartment booking done, committed locally (backend 2ee1166, frontend a49eb5b) - 30 October 2026
+
+- Whole apartments bookable: quote, hold (one stay booking + one inventory_reservation; exclusion constraint blocks overlaps incl. turnover), payment, manual/instant approval, cancellation (rent/cleaning/pet same ratio, reconciled to captured allocations), early departure (cleaning/pet kept, unused nights per rule, completes the stay). Owner block/unblock nights (partial unblock keeps the rest). Search, listing panel, checkout, records, voucher.
+- User decision: apartment payouts use the hotel stay payout run; excluded from hotel analytics, hotel release and the stay hold-expiry alarm.
+- Migration 0089 (rentra_visit_transition_proof + apartment early-departure case). Backend 503/503 local PG, frontend 158/158, next build passes. Reviews closed. Browser QA not run.
+
+**Exact next action:** Story 3.12, or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0089 (apply with db:migrate; it seeds the apartment category).
 
 ### Story 3.8 pet policy done, committed locally (backend 57d541d, frontend 7aaf4dd) - 29 October 2026
 
