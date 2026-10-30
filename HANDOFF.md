@@ -52,7 +52,12 @@ When this migration is committed, record the matching code/docs commit or PR lin
 - Backend 475/475 local PG, frontend 154/154, next build passes, eslint/prettier/diff-check clean. Not committed, browser QA not run.
 - Review 1 (8 items) fixed: pets=0 keeps the pre-3.9 digest. The hotel pet fee is now trip-level: partial cancel refunds 0, whole cancel refunds at the rent ratio. Hotel cards include the fee; PETS_* are 422 everywhere; PETS_INVALID added. Decisions: pet money booked as rent, with the split kept in the snapshots (accepted). Farm once-only pet charges are now spread over visits by largest remainder.
 
-**Exact next action:** Story 3.9 committed locally (backend 2778bda, frontend d76f690); review CLOSED after reconciliation fix. Next: Story 3.10, or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0087.
+### Story 3.10 whole-apartment setup done, committed locally (backend 2f090be, frontend edee443) - 30 October 2026
+
+- Whole apartment category (stay vertical, rental unit `unit_night`) with apartment profile: unit, beds, occupants, min/max nights 1-90, arrival minimums, check-in/out, turnover 0-3 nights, flat weekday/weekend price, cleaning fee (0 allowed). Owners save + submit; admin reviews; hidden from all guest surfaces until 3.11. Night cancellation presets; hotel photo limits.
+- Migration 0088 (enum value + apartment_profile). Category row seeded by `db:migrate` (migrate.js) after migrations commit, so apply Neon migrations with the normal migrate command, not raw SQL. Backend 484/484 local PG, frontend 156/156, next build passes. Review CLOSED. Browser QA not run.
+
+**Exact next action:** Story 3.11 (book apartments with exclusive stock and buffers), or the Epic 2 release when authorized. Nothing pushed; Neon pending 0076-0088.
 
 ### Story 3.8 pet policy done, committed locally (backend 57d541d, frontend 7aaf4dd) - 29 October 2026
 
