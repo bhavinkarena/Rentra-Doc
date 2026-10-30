@@ -1,6 +1,6 @@
 # Rentra team handoff
 
-Updated: 28 October 2026 (Asia/Kolkata), Stories 3.1-3.3 complete locally; Epic 2 release still pending.
+Updated: 30 October 2026 (Asia/Kolkata), Story 3.12 verified and committed locally; device and release gates remain open.
 
 ## Start here
 
@@ -19,6 +19,24 @@ All three Git working trees were clean before migration. Documentation moves and
 When this migration is committed, record the matching code/docs commit or PR links before handing it to a teammate. Local changes are not visible to others until published.
 
 ## Most recent BMad work
+
+### Story 3.12 local verification complete, 30 October 2026
+
+Starting HEADs matched exactly: backend `2ee11661ba7714b4546a5dc2197a92996d96e39a`, frontend `a49eb5b64dd37abeeedef8c5011fb785396c9d45`, docs `a49d89704f5ed42006afd079320619c6c2b58550`. All trees were clean. Local Story 3.12 commits:
+
+- Backend: `c5fb4286e39857bd6bca40e654f607ff80f11444`.
+- Frontend: `7989a254b8687559af89ac5a4b1c9a76e81537a5`.
+- Shared docs: the checkpoint commit containing this entry (`git rev-parse HEAD` in Rentra-Doc). All three commits carry the requested co-author trailer. No push or deployment occurred.
+
+Fixed demonstrated defects: whole-apartment public DTO/type and starting price; canonical redirects dropping pets; public hotel pet validation and comparison prices; public hotel totals omitting the existing service fee; checkout fee disclosure; apartment departure room wording; apartment price row keys; owner-calendar target sizes, readable state labels and property title; explicit notice when category mapping removes child ages. No migration.
+
+Actual checks: backend **503/503** (final safe local serial run, zero skips), frontend **158/158**, production build, targeted configured ESLint/Prettier, `db:check` **90**, and code diff whitespace checks. The supplied backend glob discovers zero tests; the executed pattern is `test/**/*.test.js` with the same required safe environment. Journeys: **452/452** assertions across main desktop/phone, detailed hotel/context, farm calendar and apartment cancellation/departure runners; additional target remediation **16/16**, startup-failure guards **4/4**. Direct apartment service assertions **9/9**. See the [spec](_bmad-output/implementation-artifacts/spec-3-12-suitable-stay-verification.md) and [reproduction/evidence](../Rentra/docs/qa/story-3-12/README.md).
+
+Open gates: actual iOS/Android, human screen reader, native zoom, field Core Web Vitals, sustained backend load/strict performance, specialist assistance-animal/family supply/apartment local-rule acceptance, actual hosted Test/provider/bank and all financial release gates. Fixture cookie injection tests auth recovery, not OTP delivery. Missing device/traffic evidence remains open; local verification never authorizes release.
+
+Three independent BMad review layers completed; verification gaps were fixed and independently checked, with no unresolved or deferred review findings. Journey reports comprise 440 browser assertions and 12 explicitly labelled API/provider/SQL observations. New interactive scans also found and verified a narrow farm-calendar contrast repair. Parts 01-19 each retain exactly one detailed completion card; Part 20 remains in progress. The temporary API and Next servers were stopped, and the task-owned PostgreSQL cluster shut down after its fixture was dropped.
+
+**Exact next action:** for implementation, run Story 4.1, "Raise a contextual issue without waiting for the owner", through bmad-build from Rentra-Doc after checking these source revisions. Before release, collect the outstanding actual device/screen-reader/field/load and specialist/financial evidence. Do not push or deploy. Neon remains recorded at 0075; owner applies 0076–0089 with the normal backend migrate command when release is authorized, then read-only verification, backend push, frontend push. Hotel calendar `expectedVersion` still requires frontend deployment immediately after backend.
 
 ### Story 3.4 bedding per night done, committed locally (backend 4fc5a8b, frontend 391ff18) - 29 October 2026
 

@@ -7,6 +7,8 @@
 
 ## Progress
 
+**30 October 2026 — Story 3.12 local verification:** browser assertions cover room photos/full facilities, percentage child pricing and meal base, bedding, missing-cot/pet refusals, complete totals through checkout, and preview/stale-save/retry on desktop and phone. The existing service fee now appears in public comparison/quote totals and as an explicit checkout row. Apartment and farm journeys are included in the same evidence set. Backend 503/503, frontend 158/158, build and inventory 90 passed; journey assertions 452/452 plus 16 target checks, direct apartment services 9/9. Independent review and local commits are tracked in [HANDOFF](../../HANDOFF.md); [spec](../../_bmad-output/implementation-artifacts/spec-3-12-suitable-stay-verification.md), [evidence](../../../Rentra/docs/qa/story-3-12/README.md). No new hotel phase or financial release is certified. Actual devices, screen readers, field/load, specialist and hosted/provider gates remain open. The older phase notes below remain historical.
+
 Phases are delivered one at a time; the owner asks for the next one. Work happens on branch `feat/hotels` in both repos (`Rentra/`, `rentra-backend/`) and is not committed until the owner asks. This file lives at `frontend/docs/HOTEL-PLAN.md`; the copy at the project root is kept identical.
 
 | Phase | Status | Completed |

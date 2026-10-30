@@ -7,6 +7,12 @@ Two things block completion, and neither is a code defect:
 1. **Commercial decisions are unanswered.** The live collection schedule, tax treatment, deposit handling, cancellation/refund schedule and supported payment methods are business decisions. They are listed in [Decisions required](#decisions-required) and nothing below assumes an answer.
 2. **Part 19's hosted Razorpay Test acceptance was never executed.** It is carried into this part. See [the hosted Test acceptance record](rentra-customer-part19-provider-acceptance.md). Live enablement is not permissible until every row there is observed on a reachable deployment.
 
+## Story 3.12 local verification — 30 October 2026
+
+Local suitable-stay verification fixes public apartment rendering, retained pet declarations, complete hotel totals and fee disclosure, apartment departure wording and owner calendar usability. Recorded checks: backend 503/503, frontend 158/158, production build, migration inventory 90, targeted lint/format/whitespace; journey assertions 452/452 plus 16 measured targets, direct services 9/9. See the [story spec](../../_bmad-output/implementation-artifacts/spec-3-12-suitable-stay-verification.md), [evidence and reproduction](../../../Rentra/docs/qa/story-3-12/README.md), and [current review/commit checkpoint](../../HANDOFF.md).
+
+These are disposable local fixtures and fake Test provider responses. They do not complete Part 20, the carried hosted provider acceptance, actual mobile/screen-reader/field/load evidence or any financial release gate. Neon and deployment remain untouched; 0076–0089 still await owner application with the normal migrator before the matching backend release.
+
 ## Credential and environment isolation review — passed
 
 This is the part of Part 20's verification that can be performed without commercial answers. It was read from the code on 21 September 2026 and is a source review plus a configured-database inspection, not a new test run.

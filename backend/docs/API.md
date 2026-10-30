@@ -315,3 +315,15 @@ POST   /webhooks/razorpay
 ```
 
 This list is incomplete. `npm run routes` prints the authoritative list (291 routes on 1 Oct 2026).
+
+## Story 3.12: public hotel totals and declared pets
+
+The existing `POST /api/v1/discovery/listings/:code/stay-quote` accepts optional integer `pets` (0–5) alongside `checkIn`, `checkOut` and room allocations. Invalid counts get 422 `VALIDATION_FAILED`; property refusals use 422 `PETS_NOT_ALLOWED` / `PETS_OVER_LIMIT`. The rooms GET accepts the same declared pet count in its query. All public availability/quote responses remain no-store.
+
+Room comparison, dated search and public quote totals include the existing effective owner/global Rentra service fee once, on room rent and pet charges, excluding GST. The additive `feeMinor` field is integer paise. Example: two weekday nights at ₹2,600, two adults and a five-year-old charged 25% of the room-only rate divided by two adults, plus one pet at ₹150/night, with 5% GST and a 5% service fee:
+
+```json
+{"roomMinor":585000,"petMinor":30000,"taxMinor":29250,"feeMinor":30750,"totalMinor":675000}
+```
+
+The public room-inventory hash retains its compatibility meaning. It is not a persisted payment quote; checkout creates a customer-owned quote and separately binds its current fee setting. Internal room/hold pricing keeps its existing shape, so the public display fee is never added twice during payment. No new endpoint, permission or migration is introduced.
